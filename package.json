@@ -4,7 +4,8 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify"
+    "deploy": "wrangler deploy --minify",
+    "db:reset": "rm -rf .wrangler/state/v3/d1 && echo y | wrangler d1 migrations apply matharena --local"
   },
   "type": "module",
   "devDependencies": {
