@@ -1,0 +1,16 @@
+{
+  "name": "matharena",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify"
+  },
+  "type": "module",
+  "devDependencies": {
+    "wrangler": "^4.124.0"
+  },
+  "dependencies": {
+    "hono": "^4.13.3"
+  }
+}
