@@ -14,6 +14,9 @@ signupRoutes.post("/signup", async (c) => {
   const body = await c.req.parseBody();
   const username = body.username;
   const password = body.password;
+  if (typeof username !== "string" || typeof password !== "string") {
+    return c.text("Internal Server Error", 500);
+  }
 
   const result = signupSchema.safeParse({
     username,
@@ -26,7 +29,7 @@ signupRoutes.post("/signup", async (c) => {
     return c.html(
       <SignupForm
         values={{
-          username: typeof username === "string" ? username : "",
+          username,
         }}
         fieldErrors={errors.fieldErrors}
       />,
@@ -34,11 +37,11 @@ signupRoutes.post("/signup", async (c) => {
     );
   }
 
-  if (reservedUsernames.includes(result.data.username)) {
+  if (reservedUsernames.includes(username)) {
     return c.html(
       <SignupForm
         values={{
-          username: result.data.username,
+          username,
         }}
         fieldErrors={{ username: ["Username is not available"] }}
       />,
