@@ -30,7 +30,6 @@ app.post("/api/signup", async (c) => {
   const body = await c.req.parseBody();
 
   const username = body.username;
-  console.log(username.toUpperCase());
   const password = body.password;
 
   // signup logic...
