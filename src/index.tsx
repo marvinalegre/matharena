@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 
-import { homeRoutes } from "@/routes";
+import routes from "@/routes";
 
 const app = new Hono();
 
-app.route("/", homeRoutes);
+app.route("/", routes);
 
 export default app;
