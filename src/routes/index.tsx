@@ -1,7 +1,7 @@
 import { Hono } from "hono";
-import { signupSchema } from "../lib/validation";
+import { signupSchema } from "@/lib/validation";
 import { z } from "zod";
-import { Layout } from "../layouts/Layout";
+import { Layout } from "@/layouts/Layout";
 
 export const homeRoutes = new Hono();
 

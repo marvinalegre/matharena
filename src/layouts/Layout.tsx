@@ -1,6 +1,6 @@
 import { FC, Child } from "hono/jsx";
 
-import { HtmlDocument } from "./HtmlDocument";
+import { HtmlDocument } from "@/layouts/HtmlDocument";
 
 type LayoutProps = {
   links?: Child;
