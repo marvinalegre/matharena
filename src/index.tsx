@@ -1,4 +1,7 @@
 import { Hono } from "hono";
+import { signupSchema } from "./lib/validation";
+import { z } from "zod";
+import { Layout } from "./layouts/Layout";
 
 const app = new Hono();
 
@@ -8,33 +11,95 @@ app.get("/login", (c) => c.html(<h1>login page</h1>));
 
 app.get("/signup", (c) =>
   c.html(
-    <body>
+    <Layout
+      scripts={
+        <>
+          <script defer src="/js/pages/signup.js"></script>
+          <script defer src="/vendor/the-fixi-project/fixi-0.9.4.js"></script>
+        </>
+      }
+    >
       <h1>signup page</h1>
 
-      <form method="post" action="/api/signup">
-        <label>
-          username
-          <input name="username" />
-        </label>
-        <label>
-          password
-          <input name="password" type="password" />
-        </label>
-        <button type="submit">sign up</button>
-      </form>
-    </body>,
+      <SignupForm />
+    </Layout>,
   ),
 );
 
 app.post("/api/signup", async (c) => {
   const body = await c.req.parseBody();
 
-  const username = body.username;
-  const password = body.password;
+  const result = signupSchema.safeParse({
+    username: body.username,
+    password: body.password,
+  });
 
-  // signup logic...
+  if (!result.success) {
+    const errors = z.flattenError(result.error);
 
-  return c.redirect("/login");
+    return c.html(
+      <SignupForm
+        values={{
+          username: typeof body.username === "string" ? body.username : "",
+        }}
+        fieldErrors={errors.fieldErrors}
+      />,
+      422,
+    );
+  }
+
+  return c.newResponse(null, 200, {
+    "FX-Redirect": "/login",
+  });
 });
 
 export default app;
+
+type SignupFormProps = {
+  values?: {
+    username?: string;
+  };
+  fieldErrors?: {
+    username?: string[];
+    password?: string[];
+  };
+};
+
+export function SignupForm({ values = {}, fieldErrors = {} }: SignupFormProps) {
+  return (
+    <form
+      id="signup-form"
+      fx-action="/api/signup"
+      fx-method="post"
+      fx-target="#signup-form"
+      fx-swap="outerHTML"
+    >
+      <div>
+        <label for="username">Username</label>
+
+        <input
+          id="username"
+          name="username"
+          type="text"
+          value={values.username ?? ""}
+        />
+
+        {fieldErrors.username?.map((error) => (
+          <p>{error}</p>
+        ))}
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+
+        <input id="password" name="password" type="password" />
+
+        {fieldErrors.password?.map((error) => (
+          <p>{error}</p>
+        ))}
+      </div>
+
+      <button type="submit">Sign up</button>
+    </form>
+  );
+}
