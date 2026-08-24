@@ -9,7 +9,7 @@ export const signupRoutes = new Hono();
 
 signupRoutes.get("/signup", (c) => c.html(<SignupPage />));
 
-signupRoutes.post("/api/signup", async (c) => {
+signupRoutes.post("/signup", async (c) => {
   const body = await c.req.parseBody();
 
   const result = signupSchema.safeParse({

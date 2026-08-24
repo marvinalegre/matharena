@@ -12,7 +12,7 @@ export function SignupForm({ values = {}, fieldErrors = {} }: SignupFormProps) {
   return (
     <form
       id="signup-form"
-      fx-action="/api/signup"
+      fx-action="/signup"
       fx-method="post"
       fx-target="#signup-form"
       fx-swap="outerHTML"
