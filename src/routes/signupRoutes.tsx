@@ -6,17 +6,18 @@ import { reservedUsernames } from "@/lib/reservedUsernames";
 import { SignupForm } from "@/components/SignupForm";
 import { SignupPage } from "@/pages/SignupPage";
 
-export const signupRoutes = new Hono();
+export const signupRoutes = new Hono<{ Bindings: Env }>();
 
 signupRoutes.get("/signup", (c) => c.html(<SignupPage />));
 
 signupRoutes.post("/signup", async (c) => {
   const body = await c.req.parseBody();
-  const username = body.username;
+  let username = body.username;
   const password = body.password;
   if (typeof username !== "string" || typeof password !== "string") {
     return c.text("Internal Server Error", 500);
   }
+  username = username.toLocaleLowerCase();
 
   const result = signupSchema.safeParse({
     username,
@@ -38,6 +39,23 @@ signupRoutes.post("/signup", async (c) => {
   }
 
   if (reservedUsernames.includes(username)) {
+    return c.html(
+      <SignupForm
+        values={{
+          username,
+        }}
+        fieldErrors={{ username: ["Username is not available"] }}
+      />,
+      422,
+    );
+  }
+
+  const isUsernameAvailable =
+    (await c.env.DB.prepare("select 1 from users where username = ?")
+      .bind(username)
+      .first()) == null;
+
+  if (!isUsernameAvailable) {
     return c.html(
       <SignupForm
         values={{
