@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { signupSchema } from "@/lib/validation";
 import { reservedUsernames } from "@/lib/reservedUsernames";
+import { hash } from "@/lib/auth";
 import { SignupForm } from "@/components/SignupForm";
 import { SignupPage } from "@/pages/SignupPage";
 
@@ -51,7 +52,13 @@ signupRoutes.post("/signup", async (c) => {
   }
 
   const isUsernameAvailable =
-    (await c.env.DB.prepare("select 1 from users where username = ?")
+    (await c.env.DB.prepare(
+      `
+      select 1
+      from users
+      where username = ?
+      `,
+    )
       .bind(username)
       .first()) == null;
 
@@ -66,6 +73,17 @@ signupRoutes.post("/signup", async (c) => {
       422,
     );
   }
+
+  const hashedPassword = await hash(password);
+
+  await c.env.DB.prepare(
+    `
+    insert into users (username, password_hash, salt)
+    values (?, ?, ?)
+    `,
+  )
+    .bind(username, hashedPassword.hash, hashedPassword.salt)
+    .run();
 
   return c.newResponse(null, 200, {
     "FX-Redirect": "/login",
