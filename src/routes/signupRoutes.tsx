@@ -35,7 +35,7 @@ signupRoutes.post("/", async (c) => {
     );
   }
 
-  const normalizedUsername = result.data.username.toLocaleLowerCase();
+  const normalizedUsername = result.data.username.toLowerCase();
 
   if (reservedUsernames.includes(normalizedUsername)) {
     return c.html(
@@ -52,9 +52,9 @@ signupRoutes.post("/", async (c) => {
   const isUsernameAvailable =
     (await c.env.DB.prepare(
       `
-      select 1
-      from users
-      where username = ?
+      SELECT 1
+      FROM users
+      WHERE username = ?
       `,
     )
       .bind(normalizedUsername)
@@ -76,8 +76,8 @@ signupRoutes.post("/", async (c) => {
 
   await c.env.DB.prepare(
     `
-    insert into users (username, password_hash, salt)
-    values (?, ?, ?)
+    INSERT INTO users (username, password_hash, salt)
+    VALUES (?, ?, ?)
     `,
   )
     .bind(normalizedUsername, hashedPassword.hash, hashedPassword.salt)
