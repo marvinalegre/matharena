@@ -11,6 +11,10 @@ export function HomePage() {
       }
     >
       <h1>home page</h1>
+
+      <button fx-action="/logout" fx-method="post" fx-target="body">
+        Logout
+      </button>
     </Layout>
   );
 }
