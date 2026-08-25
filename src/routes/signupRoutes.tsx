@@ -4,12 +4,15 @@ import { z } from "zod";
 import { signupSchema } from "@/lib/validation";
 import { reservedUsernames } from "@/lib/reservedUsernames";
 import { hash } from "@/lib/auth";
+import { redirectIfAuthenticated } from "@/middlewares";
 import { SignupForm } from "@/components/SignupForm";
 import { SignupPage } from "@/pages/SignupPage";
 
 export const signupRoutes = new Hono<{ Bindings: Env }>();
 
-signupRoutes.get("/", (c) => c.html(<SignupPage />));
+signupRoutes.get("/", redirectIfAuthenticated("/"), (c) =>
+  c.html(<SignupPage />),
+);
 
 signupRoutes.post("/", async (c) => {
   const body = await c.req.parseBody();

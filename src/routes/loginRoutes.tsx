@@ -2,13 +2,16 @@ import { Hono } from "hono";
 
 import { signupSchema } from "@/lib/validation";
 import { verify } from "@/lib/auth";
+import { setCookie } from "hono/cookie";
+import { redirectIfAuthenticated } from "@/middlewares";
 import { LoginForm } from "@/components/LoginForm";
 import { LoginPage } from "@/pages/LoginPage";
-import { setCookie } from "hono/cookie";
 
 export const loginRoutes = new Hono<{ Bindings: Env }>();
 
-loginRoutes.get("/", (c) => c.html(<LoginPage />));
+loginRoutes.get("/", redirectIfAuthenticated("/"), (c) =>
+  c.html(<LoginPage />),
+);
 
 loginRoutes.post("/", async (c) => {
   const body = await c.req.parseBody();
