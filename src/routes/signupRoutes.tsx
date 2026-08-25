@@ -13,12 +13,8 @@ signupRoutes.get("/signup", (c) => c.html(<SignupPage />));
 
 signupRoutes.post("/signup", async (c) => {
   const body = await c.req.parseBody();
-  let username = body.username;
+  const username = body.username;
   const password = body.password;
-  if (typeof username !== "string" || typeof password !== "string") {
-    return c.text("Internal Server Error", 500);
-  }
-  username = username.toLocaleLowerCase();
 
   const result = signupSchema.safeParse({
     username,
@@ -31,7 +27,7 @@ signupRoutes.post("/signup", async (c) => {
     return c.html(
       <SignupForm
         values={{
-          username,
+          username: typeof username === "string" ? username : "",
         }}
         fieldErrors={errors.fieldErrors}
       />,
@@ -39,15 +35,17 @@ signupRoutes.post("/signup", async (c) => {
     );
   }
 
-  if (reservedUsernames.includes(username)) {
+  const normalizedUsername = result.data.username.toLocaleLowerCase();
+
+  if (reservedUsernames.includes(normalizedUsername)) {
     return c.html(
       <SignupForm
         values={{
-          username,
+          username: result.data.username,
         }}
         fieldErrors={{ username: ["Username is not available"] }}
       />,
-      422,
+      409,
     );
   }
 
@@ -59,22 +57,22 @@ signupRoutes.post("/signup", async (c) => {
       where username = ?
       `,
     )
-      .bind(username)
+      .bind(normalizedUsername)
       .first()) == null;
 
   if (!isUsernameAvailable) {
     return c.html(
       <SignupForm
         values={{
-          username,
+          username: result.data.username,
         }}
         fieldErrors={{ username: ["Username is not available"] }}
       />,
-      422,
+      409,
     );
   }
 
-  const hashedPassword = await hash(password);
+  const hashedPassword = await hash(result.data.password);
 
   await c.env.DB.prepare(
     `
@@ -82,7 +80,7 @@ signupRoutes.post("/signup", async (c) => {
     values (?, ?, ?)
     `,
   )
-    .bind(username, hashedPassword.hash, hashedPassword.salt)
+    .bind(normalizedUsername, hashedPassword.hash, hashedPassword.salt)
     .run();
 
   return c.newResponse(null, 200, {
