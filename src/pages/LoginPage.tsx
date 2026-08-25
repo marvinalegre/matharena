@@ -6,7 +6,7 @@ export function LoginPage() {
     <Layout
       scripts={
         <>
-          <script defer src="/js/pages/signup.js"></script>
+          <script defer src="/js/pages/login.js"></script>
           <script defer src="/vendor/the-fixi-project/fixi-0.9.4.js"></script>
         </>
       }

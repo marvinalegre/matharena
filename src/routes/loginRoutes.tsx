@@ -4,6 +4,7 @@ import { signupSchema } from "@/lib/validation";
 import { verify } from "@/lib/auth";
 import { LoginForm } from "@/components/LoginForm";
 import { LoginPage } from "@/pages/LoginPage";
+import { setCookie } from "hono/cookie";
 
 export const loginRoutes = new Hono<{ Bindings: Env }>();
 
@@ -69,4 +70,23 @@ loginRoutes.post("/", async (c) => {
       401,
     );
   }
+
+  const sessionId = crypto.randomUUID();
+  await c.env.KV.put(
+    `session:${sessionId}`,
+    JSON.stringify({ userId: user.id }),
+    {
+      expirationTtl: 60 * 60 * 24 * 7 * 4,
+    },
+  );
+  setCookie(c, "session", sessionId, {
+    httpOnly: true,
+    // TODO: turn secure to true in prod (ternary)
+    secure: false,
+    sameSite: "Strict",
+  });
+
+  return c.newResponse(null, 200, {
+    "FX-Redirect": "/",
+  });
 });
