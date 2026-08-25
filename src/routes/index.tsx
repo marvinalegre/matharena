@@ -5,7 +5,7 @@ import { signupRoutes } from "@/routes/signupRoutes";
 
 const routes = new Hono();
 
-routes.route("/", loginRoutes);
-routes.route("/", signupRoutes);
+routes.route("/login", loginRoutes);
+routes.route("/signup", signupRoutes);
 
 export default routes;

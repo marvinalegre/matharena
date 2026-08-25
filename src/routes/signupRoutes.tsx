@@ -9,9 +9,9 @@ import { SignupPage } from "@/pages/SignupPage";
 
 export const signupRoutes = new Hono<{ Bindings: Env }>();
 
-signupRoutes.get("/signup", (c) => c.html(<SignupPage />));
+signupRoutes.get("/", (c) => c.html(<SignupPage />));
 
-signupRoutes.post("/signup", async (c) => {
+signupRoutes.post("/", async (c) => {
   const body = await c.req.parseBody();
   const username = body.username;
   const password = body.password;

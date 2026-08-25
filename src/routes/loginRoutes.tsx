@@ -4,4 +4,4 @@ import { LoginPage } from "@/pages/LoginPage";
 
 export const loginRoutes = new Hono();
 
-loginRoutes.get("/login", (c) => c.html(<LoginPage />));
+loginRoutes.get("/", (c) => c.html(<LoginPage />));
