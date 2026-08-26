@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 
-import { homeRoutes } from "@/routes/homeRoutes";
-import { loginRoutes } from "@/routes/loginRoutes";
-import { logoutRoutes } from "@/routes/logoutRoutes";
-import { signupRoutes } from "@/routes/signupRoutes";
+import { homeRoutes } from "./homeRoutes";
+import { loginRoutes } from "./loginRoutes";
+import { logoutRoutes } from "./logoutRoutes";
+import { signupRoutes } from "./signupRoutes";
 
 const routes = new Hono();
 
