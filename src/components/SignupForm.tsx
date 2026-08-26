@@ -18,7 +18,7 @@ export function SignupForm({ values = {}, fieldErrors = {} }: SignupFormProps) {
       fx-swap="outerHTML"
     >
       <div>
-        <label for="username">Username</label>
+        <label for="username">Username: </label>
 
         <input
           id="username"
@@ -33,7 +33,7 @@ export function SignupForm({ values = {}, fieldErrors = {} }: SignupFormProps) {
       </div>
 
       <div>
-        <label for="password">Password</label>
+        <label for="password">Password: </label>
 
         <input id="password" name="password" type="password" />
 

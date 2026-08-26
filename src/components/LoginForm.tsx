@@ -16,7 +16,7 @@ export function LoginForm({ values = {}, invalidCreds }: LoginFormProps) {
     >
       {invalidCreds && <p>Invalid username or password</p>}
       <div>
-        <label for="username">Username</label>
+        <label for="username">Username: </label>
 
         <input
           id="username"
@@ -27,7 +27,7 @@ export function LoginForm({ values = {}, invalidCreds }: LoginFormProps) {
       </div>
 
       <div>
-        <label for="password">Password</label>
+        <label for="password">Password: </label>
 
         <input id="password" name="password" type="password" />
       </div>

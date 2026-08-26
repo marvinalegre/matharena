@@ -18,7 +18,7 @@ export const Layout: FC<LayoutProps> = ({ links, scripts, children }) => {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>PokéMath</title>
+          <title>MathArena</title>
 
           <link
             rel="stylesheet"
@@ -27,6 +27,7 @@ export const Layout: FC<LayoutProps> = ({ links, scripts, children }) => {
           <link rel="stylesheet" href="/css/main.css" />
           {links}
 
+          <script defer src="/vendor/the-fixi-project/fixi-0.9.4.js"></script>
           <script defer src="/js/main.js"></script>
           {scripts}
         </head>
