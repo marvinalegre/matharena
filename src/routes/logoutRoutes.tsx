@@ -12,6 +12,6 @@ logoutRoutes.post("/", async (c) => {
   deleteCookie(c, "session");
 
   return c.newResponse(null, 200, {
-    "FX-Redirect": "/testing",
+    "FX-Redirect": "/",
   });
 });
