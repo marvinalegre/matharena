@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 
+import { AppEnv } from "@/types/env";
 import { signupSchema } from "@/lib/validation";
 import { verify } from "@/lib/auth";
 import { setCookie } from "hono/cookie";
@@ -7,7 +8,7 @@ import { redirectIfAuthenticated } from "@/middlewares";
 import { LoginForm } from "@/components/LoginForm";
 import { LoginPage } from "@/pages/LoginPage";
 
-export const loginRoutes = new Hono<{ Bindings: Env }>();
+export const loginRoutes = new Hono<AppEnv>();
 
 loginRoutes.get("/", redirectIfAuthenticated("/"), (c) =>
   c.html(<LoginPage />),

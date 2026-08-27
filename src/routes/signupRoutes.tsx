@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { z } from "zod";
 
+import type { AppEnv } from "@/types/env";
 import { signupSchema } from "@/lib/validation";
 import { reservedUsernames } from "@/lib/reservedUsernames";
 import { hash } from "@/lib/auth";
@@ -8,7 +9,7 @@ import { redirectIfAuthenticated } from "@/middlewares";
 import { SignupForm } from "@/components/SignupForm";
 import { SignupPage } from "@/pages/SignupPage";
 
-export const signupRoutes = new Hono<{ Bindings: Env }>();
+export const signupRoutes = new Hono<AppEnv>();
 
 signupRoutes.get("/", redirectIfAuthenticated("/"), (c) =>
   c.html(<SignupPage />),
