@@ -16,6 +16,12 @@ signupRoutes.get("/", redirectIfAuthenticated("/"), (c) =>
 );
 
 signupRoutes.post("/", async (c) => {
+  const ip = c.req.header("CF-Connecting-IP") ?? "unknown";
+  const rateLimit = await c.env.SIGNUP_LIMITER.limit({ key: ip });
+  if (!rateLimit.success) {
+    return c.html("<p>Too many requests</p>", 429);
+  }
+
   const body = await c.req.parseBody();
   const username = body.username;
   const password = body.password;
