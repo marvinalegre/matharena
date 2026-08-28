@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { QuestionForm } from "@/components/QuestionForm";
 import { Layout } from "@/layouts/Layout";
 
 type Props = {
@@ -40,6 +41,9 @@ export function PlayPage({ user }: Props) {
       }
     >
       <Navbar currentPath="/play" />
+      <main class="container">
+        <QuestionForm />
+      </main>
     </Layout>
   );
 }
