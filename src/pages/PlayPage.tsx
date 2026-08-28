@@ -4,9 +4,10 @@ import { Layout } from "@/layouts/Layout";
 
 export interface PlayPageProps {
   question: string;
+  answer?: string;
 }
 
-export function PlayPage({ question }: PlayPageProps) {
+export function PlayPage({ question, answer }: PlayPageProps) {
   return (
     <Layout
       links={
@@ -42,7 +43,7 @@ export function PlayPage({ question }: PlayPageProps) {
     >
       <Navbar currentPath="/play" />
       <main class="container">
-        <QuestionForm question={question} />
+        <QuestionForm question={question} answer={answer} />
       </main>
     </Layout>
   );
