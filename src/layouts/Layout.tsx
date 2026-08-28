@@ -31,7 +31,15 @@ export const Layout: FC<LayoutProps> = ({ links, scripts, children }) => {
           <script defer src="/js/main.js"></script>
           {scripts}
         </head>
-        <body>{children}</body>
+        <body>
+          {children}
+
+          <footer class="container">
+            <a href="https://github.com/marvinalegre/matharena" target="_blank">
+              source code
+            </a>
+          </footer>
+        </body>
       </html>
     </HtmlDocument>
   );
