@@ -1,6 +1,8 @@
 import { FC } from "hono/jsx";
 
-export const QuestionForm: FC = () => (
+import type { PlayPageProps } from "@/pages/PlayPage";
+
+export const QuestionForm: FC<PlayPageProps> = ({ question }) => (
   <form
     id="play-form"
     fx-action="/play"
@@ -8,7 +10,7 @@ export const QuestionForm: FC = () => (
     fx-target="#play-form"
     fx-swap="outerHTML"
   >
-    <p id="question">\[1 + 1 = \; ?\]</p>
+    <p id="question">{question}</p>
     <input name="answer" placeholder="Answer" autocomplete="off" required />
     <button type="submit">Submit</button>
   </form>

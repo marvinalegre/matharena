@@ -1,11 +1,11 @@
 import { Navbar } from "@/components/Navbar";
 import { Layout } from "@/layouts/Layout";
 
-type Props = {
+interface HomePageProps {
   user: { userId: number } | undefined;
-};
+}
 
-export function HomePage({ user }: Props) {
+export function HomePage({ user }: HomePageProps) {
   return (
     <Layout
       links={<link rel="stylesheet" href="/css/pages/home.css" />}

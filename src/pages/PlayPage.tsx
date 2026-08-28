@@ -2,11 +2,11 @@ import { Navbar } from "@/components/Navbar";
 import { QuestionForm } from "@/components/QuestionForm";
 import { Layout } from "@/layouts/Layout";
 
-type Props = {
-  user: { userId: number } | undefined;
-};
+export interface PlayPageProps {
+  question: string;
+}
 
-export function PlayPage({ user }: Props) {
+export function PlayPage({ question }: PlayPageProps) {
   return (
     <Layout
       links={
@@ -42,7 +42,7 @@ export function PlayPage({ user }: Props) {
     >
       <Navbar currentPath="/play" />
       <main class="container">
-        <QuestionForm />
+        <QuestionForm question={question} />
       </main>
     </Layout>
   );

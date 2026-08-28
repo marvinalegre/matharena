@@ -20,6 +20,9 @@ importers:
       hono:
         specifier: ^4.13.3
         version: 4.13.3
+      mathforge:
+        specifier: link:/home/marvin/projects/mathforge
+        version: link:../mathforge
       zod:
         specifier: ^4.4.3
         version: 4.4.3
