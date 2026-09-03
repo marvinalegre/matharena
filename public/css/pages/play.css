@@ -85,6 +85,52 @@ button[type="submit"]:disabled {
   opacity: 0.5;
 }
 
+#toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  z-index: 9999;
+}
+
+.toast {
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+
+  background: #333;
+  color: white;
+
+  animation: toast-in 0.2s ease-out;
+}
+
+.toast.hide {
+  animation: toast-out 0.2s ease-in forwards;
+}
+
+.toast-fire {
+  display: inline-block;
+  font-size: 1.7em;
+  margin-left: 0.15em;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
 @media (min-width: 1024px) {
   main {
     padding-bottom: 13vh;

@@ -50,10 +50,12 @@ playRoutes.post("/", async (c) => {
         question={formattedQuestion}
         answer={String(question.answer)}
       />,
-      // TODO: is 200 the right status code to serve?
       200,
-      // TODO: display at toast using this header
-      { "MA-isCorrect": answer === correctAnswer ? "true" : "false" },
+      {
+        "FX-Trigger": JSON.stringify({
+          showToast: answer === correctAnswer ? "correct" : "wrong",
+        }),
+      },
     );
   }
 

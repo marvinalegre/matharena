@@ -44,6 +44,8 @@ export function PlayPage({ question, answer }: PlayPageProps) {
       <Navbar currentPath="/play" />
       <main class="container">
         <QuestionForm question={question} answer={answer} />
+
+        <div id="toast-container"></div>
       </main>
     </Layout>
   );
