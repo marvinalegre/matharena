@@ -18,9 +18,14 @@ main {
   padding-bottom: 23vh;
 }
 
-header,
-footer {
+header {
   opacity: 0.5;
+}
+
+footer,
+#menu-btn,
+#side-nav {
+  visibility: hidden;
 }
 
 form {
