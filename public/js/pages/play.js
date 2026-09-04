@@ -43,3 +43,23 @@ document.body.addEventListener("fx:after", (evt) => {
     );
   }, 3000);
 });
+
+document.addEventListener("fx:config", (evt) => {
+  const cfg = evt.detail.cfg;
+  const swap = cfg.swap;
+
+  cfg.swap = (cfg) => {
+    const parent = cfg.target.parentElement;
+
+    if (/(before|after)(begin|end)/.test(swap)) {
+      cfg.target.insertAdjacentHTML(swap, cfg.text);
+      renderMathInElement(cfg.target);
+    } else if (swap in cfg.target) {
+      cfg.target[swap] = cfg.text;
+
+      renderMathInElement(swap === "outerHTML" ? parent : cfg.target);
+    } else if (swap !== "none") {
+      throw swap;
+    }
+  };
+});
