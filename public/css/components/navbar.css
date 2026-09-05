@@ -6,11 +6,18 @@
   min-height: 4rem;
 }
 
+.navbar__menu-btn {
+  background: none;
+  border: none;
+}
+
 .navbar__brand {
   color: black;
   font-size: 1.5rem;
   font-weight: 700;
   text-decoration: none;
+
+  padding-left: 0.7rem;
 }
 
 .navbar__nav {
@@ -72,8 +79,12 @@
 
 @media (min-width: 1024px) {
   /* desktop */
-  #menu-btn {
+  .navbar__menu-btn {
     display: none;
+  }
+
+  .navbar__brand {
+    padding-left: 0;
   }
 
   .navbar__nav {

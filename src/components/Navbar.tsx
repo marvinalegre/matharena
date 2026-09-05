@@ -7,11 +7,14 @@ type NavbarProps = {
 export const Navbar: FC<NavbarProps> = ({ currentPath }) => {
   return (
     <header class="container navbar">
-      <a class="navbar__brand" href="/">
-        MathArena
-      </a>
-
-      <i id="menu-btn" class="fa-solid fa-bars" style="font-size: 1.45rem"></i>
+      <div>
+        <button class="navbar__menu-btn">
+          <i class="fa-solid fa-bars" style="font-size: 1.45rem"></i>
+        </button>
+        <a class="navbar__brand" href="/">
+          MathArena
+        </a>
+      </div>
 
       <nav id="side-nav" class="navbar__nav">
         <a
@@ -21,6 +24,8 @@ export const Navbar: FC<NavbarProps> = ({ currentPath }) => {
           Leaderboard
         </a>
       </nav>
+
+      <button class="navbar__user-badge">user</button>
 
       <div id="nav-overlay" class="navbar__overlay"></div>
     </header>

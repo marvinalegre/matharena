@@ -23,8 +23,9 @@ header {
 }
 
 footer,
-#menu-btn,
-#side-nav {
+.navbar__menu-btn,
+.navbar__nav,
+.navbar__user-badge {
   visibility: hidden;
 }
 
