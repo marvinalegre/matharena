@@ -27,7 +27,7 @@ document.body.addEventListener("fx:after", (evt) => {
   toast.innerHTML =
     message === "correct"
       ? 'CORRECT! <span class="toast-fire">🔥</span>'
-      : "Wrong.";
+      : 'WRONG! <span class="toast-x">❌</span>';
 
   container.append(toast);
 
