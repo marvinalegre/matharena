@@ -25,8 +25,7 @@ export const Navbar: FC<NavbarProps> = ({ currentPath }) => {
         </a>
       </nav>
 
-      <button class="navbar__user-badge">user</button>
-      <div className="user-badge">M</div>
+      <button class="navbar__user-badge">M</button>
 
       <div id="nav-overlay" class="navbar__overlay"></div>
     </header>
