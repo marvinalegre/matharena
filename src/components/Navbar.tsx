@@ -25,8 +25,18 @@ export const Navbar: FC<NavbarProps> = ({ currentPath }) => {
         </a>
       </nav>
 
-      <button class="navbar__user-badge">M</button>
+      <div class="navbar__user">
+        <button class="navbar__user-badge" id="user-menu-button">
+          M
+        </button>
 
+        <div class="user-menu" id="user-menu" hidden>
+          <a href="/profile">Profile</a>
+          <button type="button" id="logout">
+            Log out
+          </button>
+        </div>
+      </div>
       <div id="nav-overlay" class="navbar__overlay"></div>
     </header>
   );

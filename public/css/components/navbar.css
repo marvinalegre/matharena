@@ -93,6 +93,91 @@
   font-weight: 600;
 }
 
+.navbar__user {
+  position: relative;
+}
+
+.navbar__user-badge {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #d6d6d6;
+  border-radius: 50%;
+  background: #eeeeee;
+  color: #222;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.navbar__user-badge:hover {
+  background: #e0e0e0;
+}
+
+.navbar__user-badge:active {
+  background: #d6d6d6;
+}
+
+.user-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+
+  min-width: 150px;
+  padding: 6px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.user-menu a,
+.user-menu button {
+  width: 100%;
+  padding: 9px 10px;
+
+  border: 0;
+  border-radius: 5px;
+
+  background: transparent;
+  color: #222;
+
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.user-menu a:hover,
+.user-menu button:hover {
+  background: #eeeeee;
+}
+
+.user-menu button {
+  color: #b42318;
+}
+
+.user-menu button:hover {
+  background: #fef0ef;
+}
+
+.user-menu[hidden] {
+  display: none;
+}
+
 @media (min-width: 1024px) {
   /* desktop */
   .navbar__menu-btn {
