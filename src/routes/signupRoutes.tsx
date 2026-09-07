@@ -84,7 +84,7 @@ signupRoutes.post("/", async (c) => {
 
   const hashedPassword = await hash(result.data.password);
 
-  await c.env.DB.prepare(
+  const insertResult = await c.env.DB.prepare(
     `
     INSERT INTO users (username, password_hash, salt)
     VALUES (?, ?, ?)
@@ -93,7 +93,25 @@ signupRoutes.post("/", async (c) => {
     .bind(normalizedUsername, hashedPassword.hash, hashedPassword.salt)
     .run();
 
+  if (insertResult.success) {
+    addInitialRating(c.env.DB, insertResult.meta.last_row_id);
+  }
+
   return c.newResponse(null, 200, {
     "FX-Redirect": "/login",
   });
 });
+
+async function addInitialRating(
+  db: D1Database,
+  userId: number,
+  rating: number = 800,
+) {
+  await db
+    .prepare(
+      `INSERT INTO rating_history (user_id, rating)
+       VALUES (?, ?)`,
+    )
+    .bind(userId, rating)
+    .run();
+}
