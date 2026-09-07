@@ -42,6 +42,7 @@ export function PlayPage({ question, answer }: PlayPageProps) {
       }
     >
       <Navbar currentPath="/play" />
+
       <main class="container">
         <QuestionForm question={question} answer={answer} />
 

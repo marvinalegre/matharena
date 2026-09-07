@@ -2,16 +2,16 @@ import { Navbar } from "@/components/Navbar";
 import { Layout } from "@/layouts/Layout";
 
 interface HomePageProps {
-  user: { userId: number } | undefined;
+  username: string | null;
 }
 
-export function HomePage({ user }: HomePageProps) {
+export function HomePage({ username }: HomePageProps) {
   return (
     <Layout
       links={<link rel="stylesheet" href="/css/pages/home.css" />}
       scripts={<script defer src="/js/pages/home.js"></script>}
     >
-      <Navbar currentPath="/" />
+      <Navbar currentPath="/" username={username} />
 
       <div class="page">
         <section class="hero">
