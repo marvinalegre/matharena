@@ -7,7 +7,9 @@ export function SignupPage() {
       <main class="signup-page">
         <section class="signup-page__card">
           <div class="signup-page__header">
-            <p class="signup-page__eyebrow">MATHARENA</p>
+            <a href="/">
+              <p class="signup-page__eyebrow">MATHARENA</p>
+            </a>
 
             <h1>Create your account</h1>
 

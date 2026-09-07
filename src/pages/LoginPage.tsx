@@ -11,7 +11,9 @@ export function LoginPage() {
       <main class="login-page">
         <section class="login-page__card">
           <div class="login-page__header">
-            <p class="login-page__eyebrow">MATHARENA</p>
+            <a href="/">
+              <p class="login-page__eyebrow">MATHARENA</p>
+            </a>
             <h1>Welcome back</h1>
             <p class="login-page__subtitle">
               Log in to continue your math journey.
