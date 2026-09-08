@@ -1,0 +1,40 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.feedback-page {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.feedback-content {
+  width: min(100%, 600px);
+}
+
+.feedback-content h1 {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.feedback-content p {
+  color: #737373;
+  line-height: 1.6;
+}
+
+.feedback-content a {
+  color: inherit;
+}

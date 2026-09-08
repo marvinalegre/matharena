@@ -35,6 +35,7 @@ export const Layout: FC<LayoutProps> = ({ links, scripts, children }) => {
           {children}
 
           <footer class="container">
+            <a href="feedback">feedback</a>
             <a href="https://github.com/marvinalegre/matharena" target="_blank">
               source code
             </a>
