@@ -6,8 +6,9 @@ import { SUPPORTED_QUESTIONS } from "@/lib/supportedQuestions";
 import { PlayPage } from "@/pages/PlayPage";
 import { RatingDisplay } from "@/components/RatingDisplay";
 import { QuestionForm } from "@/components/QuestionForm";
-import { getRatingDisplay } from "@/lib/rating";
+import { getRatingDisplay, newRating } from "@/lib/rating";
 import { getCookie } from "hono/cookie";
+import { updateUserRating } from "@/lib/users";
 
 export const playRoutes = new Hono<AppEnv>();
 
@@ -77,8 +78,30 @@ playRoutes.post("/", async (c) => {
 
   const user = c.get("user");
   const sessionId = getCookie(c, "session") as string;
-  const currentQuestion = await getCurrentQuestion(c.env.KV, sessionId);
+  const currentQuestion = (await getCurrentQuestion(
+    c.env.KV,
+    sessionId,
+  )) as CurrentQuestion;
   const newQuestion = await createAndStoreQuestion(c.env.KV, sessionId);
+
+  const questionRating = (await c.env.DB.prepare(
+    "select rating from questions where code = ?",
+  )
+    .bind(currentQuestion.code)
+    .first()) as { rating: number };
+  const userRating = (await c.env.DB.prepare(
+    "select rating from users where id = ?",
+  )
+    .bind(user.userId)
+    .first()) as { rating: number };
+  const isCorrect = answer === String(currentQuestion.answer);
+
+  await updateUserRating(
+    c.env.DB,
+    user.userId,
+    newRating(userRating.rating, isCorrect ? 1 : 0, questionRating.rating),
+  );
+
   const rating = await getRatingDisplay(
     c.env.DB,
     user.userId,
@@ -100,8 +123,7 @@ playRoutes.post("/", async (c) => {
     200,
     {
       "FX-Trigger": JSON.stringify({
-        showToast:
-          answer === String(currentQuestion.answer) ? "correct" : "wrong",
+        showToast: isCorrect ? "correct" : "wrong",
       }),
     },
   );
