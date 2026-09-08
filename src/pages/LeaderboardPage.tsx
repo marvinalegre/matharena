@@ -7,7 +7,7 @@ export interface LeaderboardUser {
 }
 
 interface Props {
-  username: string | null;
+  username?: string;
   leaderboard: LeaderboardUser[];
 }
 

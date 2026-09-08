@@ -1,14 +1,25 @@
-export async function getUsername(
+export function getUser(
   db: D1Database,
   userId: number | undefined,
-): Promise<string | null> {
-  if (userId === undefined) return null;
-  const user = await db
-    .prepare("SELECT username FROM users WHERE id = ?")
-    .bind(userId)
-    .first<{ username: string }>();
+): Promise<{ username: string; rating: number } | null>;
 
-  return user?.username ?? null;
+export function getUser(
+  db: D1Database,
+  username: string | undefined,
+): Promise<{ username: string; rating: number } | null>;
+
+export async function getUser(
+  db: D1Database,
+  identifier: number | string | undefined,
+) {
+  if (identifier === undefined) return null;
+
+  const column = typeof identifier === "number" ? "id" : "username";
+
+  return db
+    .prepare(`SELECT username, rating FROM users WHERE ${column} = ?`)
+    .bind(identifier)
+    .first<{ username: string; rating: number }>();
 }
 
 export async function updateUserRating(

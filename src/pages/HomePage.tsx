@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Layout } from "@/layouts/Layout";
 
 interface HomePageProps {
-  username: string | null;
+  username: string | null | undefined;
 }
 
 export function HomePage({ username }: HomePageProps) {
