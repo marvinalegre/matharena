@@ -6,6 +6,7 @@ import { SUPPORTED_QUESTIONS } from "@/lib/supportedQuestions";
 import { PlayPage } from "@/pages/PlayPage";
 import { QuestionForm } from "@/components/QuestionForm";
 import { getRatingDisplay } from "@/lib/rating";
+import { getCookie } from "hono/cookie";
 
 export const playRoutes = new Hono<AppEnv>();
 
@@ -26,8 +27,13 @@ playRoutes.get("/", async (c) => {
     return c.html(<PlayPage {...props} />);
   }
 
+  const sessionId = getCookie(c, "session") as string;
+  let currentQuestion = await getCurrentQuestion(c.env.KV, sessionId);
+  currentQuestion =
+    currentQuestion ?? (await createAndStoreQuestion(c.env.KV, sessionId));
+
   props = {
-    question: formattedQuestion,
+    question: formatQuestion(currentQuestion.code, currentQuestion.data),
     rating: await getRatingDisplay(c.env.DB, user.userId, randomQuestionCode),
   };
 
@@ -79,4 +85,38 @@ function formatQuestion(code: string, data: any) {
   }
 
   throw new Error("Formatter: Invalid question code");
+}
+
+interface CurrentQuestion {
+  code: string;
+  data: any;
+  answer: string;
+}
+
+function getRandomQuestionCode() {
+  return SUPPORTED_QUESTIONS[
+    Math.floor(Math.random() * SUPPORTED_QUESTIONS.length)
+  ];
+}
+
+async function getCurrentQuestion(kv: KVNamespace, sessionId: string) {
+  return kv.get<CurrentQuestion>(`current-question:${sessionId}`, "json");
+}
+
+async function createAndStoreQuestion(kv: KVNamespace, sessionId: string) {
+  const code = getRandomQuestionCode();
+  const question = forge(code);
+
+  const currentQuestion = {
+    code,
+    data: question.data,
+    answer: question.answer,
+  };
+
+  await kv.put(
+    `current-question:${sessionId}`,
+    JSON.stringify(currentQuestion),
+  );
+
+  return currentQuestion;
 }
