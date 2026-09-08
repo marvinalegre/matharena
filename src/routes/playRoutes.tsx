@@ -14,20 +14,22 @@ playRoutes.get("/", async (c) => {
     SUPPORTED_QUESTIONS[Math.floor(Math.random() * SUPPORTED_QUESTIONS.length)];
   const question = forge(randomQuestionCode);
   const formattedQuestion = formatQuestion(randomQuestionCode, question.data);
+
   const user = c.get("user");
-  const props = user
-    ? {
-        question: formattedQuestion,
-        rating: await getRatingDisplay(
-          c.env.DB,
-          user.userId,
-          randomQuestionCode,
-        ),
-      }
-    : {
-        question: formattedQuestion,
-        answer: String(question.answer),
-      };
+  let props;
+
+  if (!user) {
+    props = {
+      question: formattedQuestion,
+      answer: question.answer,
+    };
+    return c.html(<PlayPage {...props} />);
+  }
+
+  props = {
+    question: formattedQuestion,
+    rating: await getRatingDisplay(c.env.DB, user.userId, randomQuestionCode),
+  };
 
   return c.html(<PlayPage {...props} />);
 });
