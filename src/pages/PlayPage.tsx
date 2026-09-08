@@ -50,15 +50,17 @@ export function PlayPage({ question, answer, rating }: PlayPageProps) {
       <Navbar currentPath="/play" />
 
       <main class="container">
-        {rating && (
-          <RatingDisplay
-            rating={rating.current}
-            correctChange={rating.correct}
-            incorrectChange={rating.incorrect}
-          />
-        )}
+        <div id="target">
+          {rating && (
+            <RatingDisplay
+              rating={rating.current}
+              correctChange={rating.correct}
+              incorrectChange={rating.incorrect}
+            />
+          )}
 
-        <QuestionForm question={question} answer={answer} />
+          <QuestionForm question={question} answer={answer} />
+        </div>
 
         <div id="toast-container"></div>
       </main>

@@ -7,7 +7,7 @@ export const QuestionForm: FC<PlayPageProps> = ({ question, answer }) => (
     id="play-form"
     fx-action="/play"
     fx-method="post"
-    fx-target="#play-form"
+    fx-target="#target"
     fx-swap="outerHTML"
   >
     <p id="question">{question}</p>

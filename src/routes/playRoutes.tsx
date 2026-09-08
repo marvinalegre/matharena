@@ -4,6 +4,7 @@ import { forge } from "mathforge";
 import type { AppEnv } from "@/types/env";
 import { SUPPORTED_QUESTIONS } from "@/lib/supportedQuestions";
 import { PlayPage } from "@/pages/PlayPage";
+import { RatingDisplay } from "@/components/RatingDisplay";
 import { QuestionForm } from "@/components/QuestionForm";
 import { getRatingDisplay } from "@/lib/rating";
 import { getCookie } from "hono/cookie";
@@ -74,7 +75,36 @@ playRoutes.post("/", async (c) => {
     );
   }
 
-  return c.text("boo");
+  const user = c.get("user");
+  const sessionId = getCookie(c, "session") as string;
+  const currentQuestion = await getCurrentQuestion(c.env.KV, sessionId);
+  const newQuestion = await createAndStoreQuestion(c.env.KV, sessionId);
+  const rating = await getRatingDisplay(
+    c.env.DB,
+    user.userId,
+    newQuestion.code,
+  );
+
+  return c.html(
+    <div id="target">
+      <RatingDisplay
+        rating={rating.current}
+        correctChange={rating.correct}
+        incorrectChange={rating.incorrect}
+      />
+
+      <QuestionForm
+        question={formatQuestion(newQuestion.code, newQuestion.data)}
+      />
+    </div>,
+    200,
+    {
+      "FX-Trigger": JSON.stringify({
+        showToast:
+          answer === String(currentQuestion.answer) ? "correct" : "wrong",
+      }),
+    },
+  );
 });
 
 function formatQuestion(code: string, data: any) {
