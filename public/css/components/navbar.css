@@ -127,34 +127,37 @@
 
 .user-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 0.5rem);
   right: 0;
 
-  min-width: 150px;
-  padding: 6px;
-
-  display: flex;
-  flex-direction: column;
+  min-width: 160px;
+  padding: 0.35rem;
 
   background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 1px solid #dedede;
+  border-radius: 6px;
 
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
+
+  z-index: 100;
 }
 
 .user-menu a,
 .user-menu button {
+  display: block;
   width: 100%;
-  padding: 9px 10px;
+  box-sizing: border-box;
+
+  padding: 0.55rem 0.7rem;
 
   border: 0;
-  border-radius: 5px;
+  border-radius: 4px;
 
   background: transparent;
-  color: #222;
+  color: #333;
 
   font: inherit;
+  font-size: 0.9rem;
   text-align: left;
   text-decoration: none;
 
@@ -166,12 +169,12 @@
   background: #eeeeee;
 }
 
-.user-menu button {
-  color: #b42318;
+.user-menu a {
+  font-weight: 500;
 }
 
-.user-menu button:hover {
-  background: #fef0ef;
+.user-menu button {
+  color: #666;
 }
 
 .user-menu[hidden] {
