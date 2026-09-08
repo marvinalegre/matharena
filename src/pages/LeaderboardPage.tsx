@@ -23,25 +23,27 @@ export function LeaderboardPage({ username, leaderboard }: Props) {
 
         <div class="leaderboard__list">
           {leaderboard.map((user, index) => (
-            <div class="leaderboard__row">
-              <span class="leaderboard__rank emoji">
-                {index === 0
-                  ? "🥇"
-                  : index === 1
-                    ? "🥈"
-                    : index === 2
-                      ? "🥉"
-                      : index + 1}
-              </span>
+            <a href={`/${user.username}`}>
+              <div class="leaderboard__row">
+                <span class="leaderboard__rank emoji">
+                  {index === 0
+                    ? "🥇"
+                    : index === 1
+                      ? "🥈"
+                      : index === 2
+                        ? "🥉"
+                        : index + 1}
+                </span>
 
-              <span class="leaderboard__avatar">
-                {user.username.charAt(0).toUpperCase()}
-              </span>
+                <span class="leaderboard__avatar">
+                  {user.username.charAt(0).toUpperCase()}
+                </span>
 
-              <span class="leaderboard__name">{user.username}</span>
+                <span class="leaderboard__name">{user.username}</span>
 
-              <span class="leaderboard__rating">{user.rating}</span>
-            </div>
+                <span class="leaderboard__rating">{user.rating}</span>
+              </div>
+            </a>
           ))}
         </div>
       </main>
