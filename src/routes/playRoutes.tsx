@@ -15,19 +15,14 @@ playRoutes.get("/", async (c) => {
   const question = forge(randomQuestionCode);
   const formattedQuestion = formatQuestion(randomQuestionCode, question.data);
   const user = c.get("user");
-  const rating = await getRatingDisplay(
-    c.env.DB,
-    user.userId,
-    randomQuestionCode,
-  );
   const props = user
     ? {
         question: formattedQuestion,
-        rating: {
-          current: rating.current,
-          correct: rating.correct,
-          incorrect: rating.incorrect,
-        },
+        rating: await getRatingDisplay(
+          c.env.DB,
+          user.userId,
+          randomQuestionCode,
+        ),
       }
     : {
         question: formattedQuestion,
