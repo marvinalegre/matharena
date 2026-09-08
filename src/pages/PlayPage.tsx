@@ -6,9 +6,14 @@ import { Layout } from "@/layouts/Layout";
 export interface PlayPageProps {
   question: string;
   answer?: string;
+  rating?: {
+    current: number;
+    correct: number;
+    incorrect: number;
+  };
 }
 
-export function PlayPage({ question, answer }: PlayPageProps) {
+export function PlayPage({ question, answer, rating }: PlayPageProps) {
   return (
     <Layout
       links={
@@ -45,7 +50,14 @@ export function PlayPage({ question, answer }: PlayPageProps) {
       <Navbar currentPath="/play" />
 
       <main class="container">
-        <RatingDisplay rating={1200} correctChange={16} incorrectChange={-1} />
+        {rating && (
+          <RatingDisplay
+            rating={rating.current}
+            correctChange={rating.correct}
+            incorrectChange={rating.incorrect}
+          />
+        )}
+
         <QuestionForm question={question} answer={answer} />
 
         <div id="toast-container"></div>
