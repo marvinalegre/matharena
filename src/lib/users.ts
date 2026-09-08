@@ -10,3 +10,14 @@ export async function getUsername(
 
   return user?.username ?? null;
 }
+
+export async function updateUserRating(
+  db: D1Database,
+  userId: number,
+  rating: number,
+) {
+  await db
+    .prepare("UPDATE users SET rating = ? WHERE id = ?")
+    .bind(rating, userId)
+    .run();
+}
