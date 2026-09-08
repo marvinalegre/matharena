@@ -13,6 +13,7 @@ main {
   flex: 1;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 23vh;
@@ -129,6 +130,54 @@ button[type="submit"]:disabled {
   margin-left: 0.15em;
 }
 
+.rating-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+  font-size: 0.85rem;
+}
+
+.rating-display__rating {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.rating-display__changes {
+  display: flex;
+  gap: 0.3rem;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+/* .rating-display { */
+/*   display: flex; */
+/*   align-items: baseline; */
+/*   gap: 0.5rem; */
+/*   font-size: 1rem; */
+/* } */
+/**/
+/* .rating-display__rating { */
+/*   font-size: 1.25rem; */
+/*   font-weight: 600; */
+/* } */
+/**/
+/* .rating-display__changes { */
+/*   display: flex; */
+/*   gap: 0.35rem; */
+/*   font-size: 0.9rem; */
+/* } */
+/**/
+/* .rating-display__correct { */
+/*   color: #2e7d32; */
+/* } */
+/**/
+/* .rating-display__incorrect { */
+/*   color: #c62828; */
+/* } */
+
 @keyframes toast-in {
   from {
     opacity: 0;
@@ -146,5 +195,9 @@ button[type="submit"]:disabled {
 @media (min-width: 1024px) {
   main {
     padding-bottom: 13vh;
+  }
+
+  .rating-display {
+    max-width: 450px;
   }
 }

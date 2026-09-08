@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { QuestionForm } from "@/components/QuestionForm";
+import { RatingDisplay } from "@/components/RatingDisplay";
 import { Layout } from "@/layouts/Layout";
 
 export interface PlayPageProps {
@@ -44,6 +45,7 @@ export function PlayPage({ question, answer }: PlayPageProps) {
       <Navbar currentPath="/play" />
 
       <main class="container">
+        <RatingDisplay rating={1200} correctChange={16} incorrectChange={-1} />
         <QuestionForm question={question} answer={answer} />
 
         <div id="toast-container"></div>
