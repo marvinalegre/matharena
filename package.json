@@ -9,12 +9,14 @@
     "db:reset": "rm -rf .wrangler/state/v3/d1 && echo y | wrangler d1 migrations apply matharena --local",
     "kv:reset": "wrangler kv key list --binding=KV | jq -r '.[].name' | xargs -I {} wrangler kv key delete {} --binding=KV",
     "seed:questions": "wrangler d1 execute matharena --file=\"scripts/seed-questions.sql\"",
-    "seedr:questions": "wrangler d1 execute matharena --file=\"scripts/seed-questions.sql\" --remote"
+    "seedr:questions": "wrangler d1 execute matharena --file=\"scripts/seed-questions.sql\" --remote",
+    "typecheck": "tsc --noEmit"
   },
   "type": "module",
   "devDependencies": {
     "@types/node": "^26.2.0",
     "@types/zxcvbn": "^4.4.5",
+    "typescript": "^7.0.2",
     "wrangler": "^4.124.0"
   },
   "dependencies": {
@@ -24,5 +26,6 @@
     "hono": "^4.13.3",
     "mathforge": "link:/home/marvin/projects/mathforge",
     "zod": "^4.4.3"
-  }
+  },
+  "packageManager": "pnpm@12.3.4+sha512.961aa41fb077da3a04a441d9f8e15ebc0c96da8ef710b2eb67bf9ee7cb0610eabd48f1fd85f51cffe73846785fa0f87c56a3a872a1d893f8446741b5cce45457"
 }
