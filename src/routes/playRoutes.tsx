@@ -107,6 +107,11 @@ playRoutes.post("/", async (c) => {
     user.userId,
     newRating(userRating.rating, isCorrect ? 1 : 0, questionRating.rating),
   );
+  await updateQuestionRating(
+    c.env.DB,
+    currentQuestion.code,
+    newRating(questionRating.rating, isCorrect ? 0 : 1, userRating.rating),
+  );
 
   const newQuestion = await createAndStoreQuestion(
     c.env.KV,
@@ -206,4 +211,15 @@ function getClosestQuestionTypeCode(
   );
 
   return nearest[Math.floor(Math.random() * nearest.length)].code;
+}
+
+export async function updateQuestionRating(
+  db: D1Database,
+  code: string,
+  rating: number,
+) {
+  await db
+    .prepare("UPDATE questions SET rating = ? WHERE code = ?")
+    .bind(rating, code)
+    .run();
 }
