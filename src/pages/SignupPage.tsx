@@ -1,7 +1,7 @@
 import { Layout } from "@/layouts/Layout";
 import { SignupForm } from "@/components/SignupForm";
 
-export function SignupPage() {
+export const SignupPage = () => {
   return (
     <Layout links={<link rel="stylesheet" href="/css/pages/signup.css" />}>
       <main class="signup-page">
@@ -25,4 +25,4 @@ export function SignupPage() {
       </main>
     </Layout>
   );
-}
+};

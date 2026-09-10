@@ -1,14 +1,14 @@
-interface RatingDisplayProps {
+interface Props {
   rating: number;
   correctChange: number;
   incorrectChange: number;
 }
 
-export function RatingDisplay({
+export const RatingDisplay = ({
   rating,
   correctChange,
   incorrectChange,
-}: RatingDisplayProps) {
+}: Props) => {
   return (
     <div class="rating-display">
       <span class="rating-display__rating">{rating}</span>
@@ -19,4 +19,4 @@ export function RatingDisplay({
       </span>
     </div>
   );
-}
+};

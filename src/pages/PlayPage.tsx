@@ -13,7 +13,7 @@ export interface PlayPageProps {
   };
 }
 
-export function PlayPage({ question, answer, rating }: PlayPageProps) {
+export const PlayPage = ({ question, answer, rating }: PlayPageProps) => {
   return (
     <Layout
       links={
@@ -66,4 +66,4 @@ export function PlayPage({ question, answer, rating }: PlayPageProps) {
       </main>
     </Layout>
   );
-}
+};

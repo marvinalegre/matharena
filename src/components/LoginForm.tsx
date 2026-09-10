@@ -1,11 +1,11 @@
-type LoginFormProps = {
+interface Props {
   values?: {
     username?: string;
   };
   invalidCreds?: boolean;
-};
+}
 
-export function LoginForm({ values = {}, invalidCreds }: LoginFormProps) {
+export const LoginForm = ({ values = {}, invalidCreds }: Props) => {
   return (
     <form
       id="login-form"
@@ -35,4 +35,4 @@ export function LoginForm({ values = {}, invalidCreds }: LoginFormProps) {
       <button type="submit">Log in</button>
     </form>
   );
-}
+};

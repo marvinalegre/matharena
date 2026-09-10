@@ -11,7 +11,7 @@ interface Props {
   leaderboard: LeaderboardUser[];
 }
 
-export function LeaderboardPage({ username, leaderboard }: Props) {
+export const LeaderboardPage = ({ username, leaderboard }: Props) => {
   return (
     <Layout links={<link rel="stylesheet" href="/css/pages/leaderboard.css" />}>
       <Navbar currentPath="/leaderboard" username={username} />
@@ -49,4 +49,4 @@ export function LeaderboardPage({ username, leaderboard }: Props) {
       </main>
     </Layout>
   );
-}
+};

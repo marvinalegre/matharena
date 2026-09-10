@@ -1,7 +1,7 @@
 import { Layout } from "@/layouts/Layout";
 import { LoginForm } from "@/components/LoginForm";
 
-export function LoginPage() {
+export const LoginPage = () => {
   return (
     <Layout
       links={<link rel="stylesheet" href="/css/pages/login.css" />}
@@ -29,4 +29,4 @@ export function LoginPage() {
       </main>
     </Layout>
   );
-}
+};

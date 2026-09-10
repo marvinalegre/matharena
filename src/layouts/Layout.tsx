@@ -2,13 +2,13 @@ import { Child } from "hono/jsx";
 
 import { HtmlDocument } from "@/layouts/HtmlDocument";
 
-type LayoutProps = {
+interface Props {
   links?: Child;
   scripts?: Child;
   children: Child;
-};
+}
 
-export const Layout = ({ links, scripts, children }: LayoutProps) => {
+export const Layout = ({ links, scripts, children }: Props) => {
   return (
     <HtmlDocument>
       <html lang="en">

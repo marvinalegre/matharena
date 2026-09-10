@@ -1,4 +1,4 @@
-type SignupFormProps = {
+interface Props {
   values?: {
     username?: string;
   };
@@ -6,9 +6,9 @@ type SignupFormProps = {
     username?: string[];
     password?: string[];
   };
-};
+}
 
-export function SignupForm({ values = {}, fieldErrors = {} }: SignupFormProps) {
+export const SignupForm = ({ values = {}, fieldErrors = {} }: Props) => {
   return (
     <form
       id="signup-form"
@@ -45,4 +45,4 @@ export function SignupForm({ values = {}, fieldErrors = {} }: SignupFormProps) {
       <button type="submit">Sign up</button>
     </form>
   );
-}
+};

@@ -5,7 +5,7 @@ interface Props {
   username: string | null | undefined;
 }
 
-export function FeedbackPage({ username }: Props) {
+export const FeedbackPage = ({ username }: Props) => {
   return (
     <Layout
       links={<link rel="stylesheet" href="/css/pages/feedback.css" />}
@@ -33,4 +33,4 @@ export function FeedbackPage({ username }: Props) {
       </main>
     </Layout>
   );
-}
+};
