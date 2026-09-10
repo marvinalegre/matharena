@@ -1,20 +1,19 @@
 import { Hono } from "hono";
-
+import { getCookie } from "hono/cookie";
 import { forge } from "mathforge";
+
 import type { AppEnv } from "@/types/env";
 import { SUPPORTED_QUESTIONS } from "@/lib/supportedQuestions";
 import { PlayPage } from "@/pages/PlayPage";
 import { RatingDisplay } from "@/components/RatingDisplay";
 import { QuestionForm } from "@/components/QuestionForm";
 import { getRatingDisplay, newRating } from "@/lib/rating";
-import { getCookie } from "hono/cookie";
 import { updateUserRating } from "@/lib/users";
 
 export const playRoutes = new Hono<AppEnv>();
 
 playRoutes.get("/", async (c) => {
-  const randomQuestionCode =
-    SUPPORTED_QUESTIONS[Math.floor(Math.random() * SUPPORTED_QUESTIONS.length)];
+  const randomQuestionCode = getRandomQuestionCode();
   const question = forge(randomQuestionCode);
   const formattedQuestion = formatQuestion(randomQuestionCode, question.data);
 
@@ -43,22 +42,16 @@ playRoutes.get("/", async (c) => {
 });
 
 playRoutes.post("/", async (c) => {
+  const user = c.get("user");
   const body = await c.req.parseBody();
   const answer = body.answer;
-  if (typeof answer !== "string") {
+  const correctAnswer = body.correctAnswer;
+  if (typeof answer !== "string" || typeof correctAnswer !== "string") {
     throw new Error("BOOOOOOOOOOOOOOMMMMMMMM!!!");
   }
 
-  if (!c.get("user")) {
-    const correctAnswer = body.correctAnswer;
-    if (typeof correctAnswer !== "string") {
-      throw new Error("BOOOOOOOOOOOOOOMMMMMMMM!!!");
-    }
-
-    const randomQuestionCode =
-      SUPPORTED_QUESTIONS[
-        Math.floor(Math.random() * SUPPORTED_QUESTIONS.length)
-      ];
+  if (!user) {
+    const randomQuestionCode = getRandomQuestionCode();
     const question = forge(randomQuestionCode);
     const formattedQuestion = formatQuestion(randomQuestionCode, question.data);
 
@@ -76,14 +69,15 @@ playRoutes.post("/", async (c) => {
     );
   }
 
-  const user = c.get("user");
   const sessionId = getCookie(c, "session") as string;
   const currentQuestion = (await getCurrentQuestion(
     c.env.KV,
     sessionId,
   )) as CurrentQuestion;
   const newQuestion = await createAndStoreQuestion(c.env.KV, sessionId);
+  const isCorrect = answer === String(currentQuestion.answer);
 
+  // TODO: use Promise.all or turn to one big query
   const questionRating = (await c.env.DB.prepare(
     "select rating from questions where code = ?",
   )
@@ -94,14 +88,11 @@ playRoutes.post("/", async (c) => {
   )
     .bind(user.userId)
     .first()) as { rating: number };
-  const isCorrect = answer === String(currentQuestion.answer);
-
   await updateUserRating(
     c.env.DB,
     user.userId,
     newRating(userRating.rating, isCorrect ? 1 : 0, questionRating.rating),
   );
-
   const rating = await getRatingDisplay(
     c.env.DB,
     user.userId,
