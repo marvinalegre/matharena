@@ -47,7 +47,7 @@ export const PlayPage = ({ question, answer, rating }: PlayPageProps) => {
         </>
       }
     >
-      <Navbar currentPath="/play" />
+      <Navbar />
 
       <main class="container">
         <div id="target">

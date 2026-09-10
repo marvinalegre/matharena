@@ -11,7 +11,7 @@ export const HomePage = ({ username }: Props) => {
       links={<link rel="stylesheet" href="/css/pages/home.css" />}
       scripts={<script defer src="/js/pages/home.js"></script>}
     >
-      <Navbar currentPath="/" username={username} />
+      <Navbar username={username} />
 
       <div class="page">
         <section class="hero">

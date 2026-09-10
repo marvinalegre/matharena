@@ -11,7 +11,7 @@ export const FeedbackPage = ({ username }: Props) => {
       links={<link rel="stylesheet" href="/css/pages/feedback.css" />}
       scripts={<script defer src="/js/pages/home.js"></script>}
     >
-      <Navbar currentPath="/" username={username} />
+      <Navbar username={username} />
 
       <main class="feedback-page">
         <section class="feedback-content">
