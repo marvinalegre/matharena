@@ -1,6 +1,6 @@
 interface Props {
-  currentPath: string;
-  username?: string | null;
+  currentPath?: string;
+  username?: string;
 }
 
 export const Navbar = ({ currentPath, username }: Props) => {

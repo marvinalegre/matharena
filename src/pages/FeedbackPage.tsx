@@ -2,7 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Layout } from "@/layouts/Layout";
 
 interface Props {
-  username: string | null | undefined;
+  username?: string;
 }
 
 export const FeedbackPage = ({ username }: Props) => {
