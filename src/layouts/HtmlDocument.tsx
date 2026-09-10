@@ -1,6 +1,6 @@
-import { FC, PropsWithChildren } from "hono/jsx";
+import { PropsWithChildren } from "hono/jsx";
 import { html } from "hono/html";
 
-export const HtmlDocument: FC<PropsWithChildren> = ({ children }) => {
+export const HtmlDocument = ({ children }: PropsWithChildren) => {
   return html`<!doctype html>${children}`;
 };

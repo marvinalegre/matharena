@@ -1,8 +1,6 @@
-import { FC } from "hono/jsx";
-
 import type { PlayPageProps } from "@/pages/PlayPage";
 
-export const QuestionForm: FC<PlayPageProps> = ({ question, answer }) => (
+export const QuestionForm = ({ question, answer }: PlayPageProps) => (
   <form
     id="play-form"
     fx-action="/play"

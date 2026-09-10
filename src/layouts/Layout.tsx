@@ -1,4 +1,4 @@
-import { FC, Child } from "hono/jsx";
+import { Child } from "hono/jsx";
 
 import { HtmlDocument } from "@/layouts/HtmlDocument";
 
@@ -8,7 +8,7 @@ type LayoutProps = {
   children: Child;
 };
 
-export const Layout: FC<LayoutProps> = ({ links, scripts, children }) => {
+export const Layout = ({ links, scripts, children }: LayoutProps) => {
   return (
     <HtmlDocument>
       <html lang="en">

@@ -1,11 +1,9 @@
-import { FC } from "hono/jsx";
-
-type NavbarProps = {
+type Props = {
   currentPath: string;
   username?: string | null;
 };
 
-export const Navbar: FC<NavbarProps> = ({ currentPath, username }) => {
+export const Navbar = ({ currentPath, username }: Props) => {
   return (
     <header class="container navbar">
       <div>
