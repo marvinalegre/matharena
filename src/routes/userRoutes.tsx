@@ -14,5 +14,5 @@ userRoutes.get("/:username", async (c) => {
     return c.text("User not found", 404);
   }
 
-  return c.html(<UserPage username={user?.username} rating={user?.rating} />);
+  return c.html(<UserPage username={user.username} rating={user.rating} />);
 });
