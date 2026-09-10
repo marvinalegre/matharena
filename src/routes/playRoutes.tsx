@@ -8,7 +8,8 @@ import { PlayPage } from "@/pages/PlayPage";
 import { RatingDisplay } from "@/components/RatingDisplay";
 import { QuestionForm } from "@/components/QuestionForm";
 import { getRatingDisplay, newRating } from "@/lib/rating";
-import { updateUserRating } from "@/lib/users";
+import { getUser, updateUserRating } from "@/lib/users";
+import { LeaderboardUser } from "@/pages/LeaderboardPage";
 
 export const playRoutes = new Hono<AppEnv>();
 
@@ -28,10 +29,20 @@ playRoutes.get("/", async (c) => {
     return c.html(<PlayPage {...props} />);
   }
 
+  const userWithRating = (await getUser(
+    c.env.DB,
+    user.userId,
+  )) as LeaderboardUser;
   const sessionId = getCookie(c, "session") as string;
   let currentQuestion = await getCurrentQuestion(c.env.KV, sessionId);
   currentQuestion =
-    currentQuestion ?? (await createAndStoreQuestion(c.env.KV, sessionId));
+    currentQuestion ??
+    (await createAndStoreQuestion(
+      c.env.KV,
+      c.env.DB,
+      userWithRating.rating,
+      sessionId,
+    ));
 
   props = {
     question: formatQuestion(currentQuestion.code, currentQuestion.data),
@@ -46,11 +57,15 @@ playRoutes.post("/", async (c) => {
   const body = await c.req.parseBody();
   const answer = body.answer;
   const correctAnswer = body.correctAnswer;
-  if (typeof answer !== "string" || typeof correctAnswer !== "string") {
+  if (typeof answer !== "string") {
     throw new Error("BOOOOOOOOOOOOOOMMMMMMMM!!!");
   }
 
   if (!user) {
+    if (typeof correctAnswer !== "string") {
+      throw new Error("BOOOOOOOOOOOOOOMMMMMMMM!!!");
+    }
+
     const randomQuestionCode = getRandomQuestionCode();
     const question = forge(randomQuestionCode);
     const formattedQuestion = formatQuestion(randomQuestionCode, question.data);
@@ -74,7 +89,6 @@ playRoutes.post("/", async (c) => {
     c.env.KV,
     sessionId,
   )) as CurrentQuestion;
-  const newQuestion = await createAndStoreQuestion(c.env.KV, sessionId);
   const isCorrect = answer === String(currentQuestion.answer);
 
   // TODO: use Promise.all or turn to one big query
@@ -92,6 +106,13 @@ playRoutes.post("/", async (c) => {
     c.env.DB,
     user.userId,
     newRating(userRating.rating, isCorrect ? 1 : 0, questionRating.rating),
+  );
+
+  const newQuestion = await createAndStoreQuestion(
+    c.env.KV,
+    c.env.DB,
+    userRating.rating,
+    sessionId,
   );
   const rating = await getRatingDisplay(
     c.env.DB,
@@ -146,8 +167,16 @@ async function getCurrentQuestion(kv: KVNamespace, sessionId: string) {
   return kv.get<CurrentQuestion>(`current-question:${sessionId}`, "json");
 }
 
-async function createAndStoreQuestion(kv: KVNamespace, sessionId: string) {
-  const code = getRandomQuestionCode();
+async function createAndStoreQuestion(
+  kv: KVNamespace,
+  db: D1Database,
+  userRating: number,
+  sessionId: string,
+) {
+  const { results: questions } = await db
+    .prepare("select code, rating from questions")
+    .all<{ code: string; rating: number }>();
+  const code = getClosestQuestionTypeCode(questions, userRating);
   const question = forge(code);
 
   const currentQuestion = {
@@ -162,4 +191,19 @@ async function createAndStoreQuestion(kv: KVNamespace, sessionId: string) {
   );
 
   return currentQuestion;
+}
+
+function getClosestQuestionTypeCode(
+  questions: { code: string; rating: number }[],
+  userRating: number,
+) {
+  const nearestDistance = Math.min(
+    ...questions.map((q) => Math.abs(q.rating - userRating)),
+  );
+
+  const nearest = questions.filter(
+    (q) => Math.abs(q.rating - userRating) === nearestDistance,
+  );
+
+  return nearest[Math.floor(Math.random() * nearest.length)].code;
 }
