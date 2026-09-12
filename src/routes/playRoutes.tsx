@@ -169,6 +169,8 @@ function formatQuestion(code: string, data: any) {
       return `\\[${data.a} + ${data.b} = \\; ?\\]`;
 
     case "count-10-random-dots":
+    case "count-20-random-dots":
+    case "count-20-50-dots-in-columns":
       return (
         <>
           <p class="text-center">Count the dots.</p>
