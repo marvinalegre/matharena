@@ -12,3 +12,7 @@ textarea:disabled {
   cursor: not-allowed;
   filter: grayscale(1);
 }
+
+.text-center {
+  text-align: center;
+}

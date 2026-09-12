@@ -1,10 +1,12 @@
+import { Child } from "hono/jsx";
+
 import { Navbar } from "@/components/Navbar";
 import { QuestionForm } from "@/components/QuestionForm";
 import { RatingDisplay } from "@/components/RatingDisplay";
 import { Layout } from "@/layouts/Layout";
 
 export interface PlayPageProps {
-  question: string;
+  question: string | Child;
   answer?: string;
   rating?: {
     current: number;

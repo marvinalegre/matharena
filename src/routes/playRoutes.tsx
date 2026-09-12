@@ -167,6 +167,14 @@ function formatQuestion(code: string, data: any) {
     case "addition-single-digit-no-carry":
     case "addition-single-digit-carry":
       return `\\[${data.a} + ${data.b} = \\; ?\\]`;
+
+    case "count-10-random-dots":
+      return (
+        <>
+          <p class="text-center">Count the dots.</p>
+          <Dots dots={data.dots} />
+        </>
+      );
   }
 
   throw new Error("Formatter: Invalid question code");
@@ -238,4 +246,22 @@ export async function updateQuestionRating(
     .prepare("UPDATE questions SET rating = ? WHERE code = ?")
     .bind(rating, code)
     .run();
+}
+
+type Dot = {
+  x: number;
+  y: number;
+};
+
+function Dots({ dots }: { dots: Dot[] }) {
+  return (
+    <div class="dots">
+      {dots.map((dot) => (
+        <span
+          class="dot"
+          style={`left: ${dot.x * 100}%; top: ${dot.y * 100}%`}
+        />
+      ))}
+    </div>
+  );
 }

@@ -19,6 +19,10 @@ main {
   padding-bottom: 23vh;
 }
 
+p {
+  font-size: 1.5rem;
+}
+
 header {
   opacity: 0.5;
 }
@@ -176,6 +180,21 @@ button[type="submit"]:disabled {
 /* .rating-display__incorrect { */
 /*   color: #c62828; */
 /* } */
+
+.dots {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000;
+  transform: translate(-50%, -50%);
+}
 
 @keyframes toast-in {
   from {
