@@ -3,3 +3,12 @@
 @import url("./layouts/container.css");
 @import url("./components/navbar.css");
 @import url("./components/footer.css");
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}

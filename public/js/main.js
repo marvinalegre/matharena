@@ -5,6 +5,27 @@ document.body.addEventListener("fx:after", (evt) => {
   }
 });
 
+// fixi disable elements extension
+document.addEventListener("fx:init", (evt) => {
+  if (evt.target.matches("[ext-fx-disable]")) {
+    evt.target.addEventListener("fx:before", () => {
+      const disableTargets = document.querySelectorAll(
+        "[ext-fx-disable-target]",
+      );
+      disableTargets.forEach((target) => {
+        target.disabled = true;
+      });
+      evt.target.addEventListener("fx:after", (afterEvt) => {
+        if (afterEvt.target == evt.target) {
+          disableTargets.forEach((target) => {
+            target.disabled = false;
+          });
+        }
+      });
+    });
+  }
+});
+
 const nav = document.querySelector(".navbar__nav");
 const overlay = document.querySelector(".navbar__overlay");
 const menuBtn = document.querySelector(".navbar__menu-btn");

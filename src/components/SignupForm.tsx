@@ -16,6 +16,7 @@ export const SignupForm = ({ values = {}, fieldErrors = {} }: Props) => {
       fx-method="post"
       fx-target="#signup-form"
       fx-swap="outerHTML"
+      ext-fx-disable
     >
       <div>
         <label for="username">Username: </label>
@@ -25,6 +26,7 @@ export const SignupForm = ({ values = {}, fieldErrors = {} }: Props) => {
           name="username"
           type="text"
           value={values.username ?? ""}
+          ext-fx-disable-target
         />
 
         {fieldErrors.username?.map((error) => (
@@ -35,14 +37,21 @@ export const SignupForm = ({ values = {}, fieldErrors = {} }: Props) => {
       <div>
         <label for="password">Password: </label>
 
-        <input id="password" name="password" type="password" />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          ext-fx-disable-target
+        />
 
         {fieldErrors.password?.map((error) => (
           <p>{error}</p>
         ))}
       </div>
 
-      <button type="submit">Sign up</button>
+      <button type="submit" ext-fx-disable-target>
+        Sign up
+      </button>
     </form>
   );
 };

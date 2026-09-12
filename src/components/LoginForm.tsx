@@ -13,6 +13,7 @@ export const LoginForm = ({ values = {}, invalidCreds }: Props) => {
       fx-method="post"
       fx-target="#login-form"
       fx-swap="outerHTML"
+      ext-fx-disable
     >
       {invalidCreds && <p>Invalid username or password</p>}
       <div>
@@ -23,16 +24,24 @@ export const LoginForm = ({ values = {}, invalidCreds }: Props) => {
           name="username"
           type="text"
           value={values.username ?? ""}
+          ext-fx-disable-target
         />
       </div>
 
       <div>
         <label for="password">Password: </label>
 
-        <input id="password" name="password" type="password" />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          ext-fx-disable-target
+        />
       </div>
 
-      <button type="submit">Log in</button>
+      <button type="submit" ext-fx-disable-target>
+        Log in
+      </button>
     </form>
   );
 };
