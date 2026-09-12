@@ -125,6 +125,22 @@ playRoutes.post("/", async (c) => {
     newQuestion.code,
   );
 
+  await c.env.DB.prepare(
+    `
+    insert into
+      attempts (question_code, user_id, user_rating, is_correct)
+    values
+      (?, ?, ?, ?)
+    `,
+  )
+    .bind(
+      currentQuestion.code,
+      user.userId,
+      userRating.rating,
+      isCorrect ? 1 : 0,
+    )
+    .run();
+
   return c.html(
     <div id="target">
       <RatingDisplay
