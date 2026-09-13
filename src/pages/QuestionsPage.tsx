@@ -1,16 +1,16 @@
 import { Navbar } from "@/components/Navbar";
 import { Layout } from "@/layouts/Layout";
 
-type Question = {
+interface Question {
   title: string;
   description: string;
   examples: readonly Example[];
-};
+}
 
-type Example = {
+interface Example {
   question: string;
   answer: string;
-};
+}
 
 interface Props {
   username?: string;

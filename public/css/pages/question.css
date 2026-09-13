@@ -1,0 +1,40 @@
+.question-page {
+  width: min(100%, 680px);
+  margin: 5rem auto;
+}
+
+.question-page > h1 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 2rem;
+}
+
+.question-page > p {
+  margin: 0 0 2rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.question-page h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.question-page ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.question-page li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .question-page {
+    margin: 1.8rem auto;
+    padding: 0 1rem;
+  }
+
+  .question-page > h1 {
+    font-size: 1.6rem;
+  }
+}
