@@ -4,6 +4,7 @@ import { forge } from "mathforge";
 
 import type { AppEnv } from "@/types/env";
 import { SUPPORTED_QUESTIONS } from "@/lib/supportedQuestions";
+import { QUESTIONS } from "@/lib/questions";
 import { PlayPage } from "@/pages/PlayPage";
 import { RatingDisplay } from "@/components/RatingDisplay";
 import { QuestionForm } from "@/components/QuestionForm";
@@ -14,12 +15,31 @@ import { LeaderboardUser } from "@/pages/LeaderboardPage";
 export const playRoutes = new Hono<AppEnv>();
 
 playRoutes.get("/", async (c) => {
-  const randomQuestionCode = getRandomQuestionCode();
-  const question = forge(randomQuestionCode);
-  const formattedQuestion = formatQuestion(randomQuestionCode, question.data);
+  const code = c.req.query("question");
 
-  const user = c.get("user");
+  let question;
+  let formattedQuestion;
   let props;
+
+  if (code) {
+    if (!(code in QUESTIONS)) {
+      return c.notFound();
+    }
+
+    question = forge(code);
+    formattedQuestion = formatQuestion(code, question.data);
+
+    props = {
+      question: formattedQuestion,
+      answer: question.answer,
+    };
+    return c.html(<PlayPage {...props} />);
+  }
+
+  const randomQuestionCode = getRandomQuestionCode();
+  question = forge(randomQuestionCode);
+  formattedQuestion = formatQuestion(randomQuestionCode, question.data);
+  const user = c.get("user");
 
   if (!user) {
     props = {
