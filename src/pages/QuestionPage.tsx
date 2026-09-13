@@ -29,6 +29,10 @@ export const QuestionPage = ({ code, username }: Props) => {
             </li>
           ))}
         </ul>
+
+        <a href={`/play?question=${code}`} class="practice-button">
+          Practice 🔥
+        </a>
       </main>
     </Layout>
   );
