@@ -11,7 +11,7 @@ userRoutes.get("/:username", async (c) => {
   const user = await getUser(c.env.DB, username);
 
   if (!user) {
-    return c.text("User not found", 404);
+    return c.notFound();
   }
 
   return c.html(<UserPage username={user.username} rating={user.rating} />);
