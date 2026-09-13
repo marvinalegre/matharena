@@ -1,16 +1,20 @@
 import { Navbar } from "@/components/Navbar";
 import { Layout } from "@/layouts/Layout";
 
-interface Question {
-  code: string;
+type Question = {
   title: string;
   description: string;
-  examples: { question: string; answer: string }[];
-}
+  examples: readonly Example[];
+};
+
+type Example = {
+  question: string;
+  answer: string;
+};
 
 interface Props {
   username?: string;
-  questions: Question[];
+  questions: Readonly<Record<string, Question>>;
 }
 
 export const QuestionsPage = ({ username, questions }: Props) => {
@@ -22,8 +26,8 @@ export const QuestionsPage = ({ username, questions }: Props) => {
         <h1>Questions</h1>
 
         <div class="questions">
-          {questions.map((question) => (
-            <a class="question" href={`/questions/${question.code}`}>
+          {Object.entries(questions).map(([code, question]) => (
+            <a class="question" href={`/questions/${code}`}>
               <h2>{question.title}</h2>
               <p>{question.description}</p>
             </a>
