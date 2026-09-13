@@ -7,12 +7,14 @@ import { logoutRoutes } from "./logoutRoutes";
 import { signupRoutes } from "./signupRoutes";
 import { userRoutes } from "./userRoutes";
 import { leaderboardRoutes } from "./leaderboardRoutes";
+import { questionsRoutes } from "./questionsRoutes";
 import { feedbackRoutes } from "./feedbackRoutes";
 
 const routes = new Hono();
 
 routes.route("/", homeRoutes);
 routes.route("/play", playRoutes);
+routes.route("/questions", questionsRoutes);
 routes.route("/leaderboard", leaderboardRoutes);
 routes.route("/login", loginRoutes);
 routes.route("/logout", logoutRoutes);

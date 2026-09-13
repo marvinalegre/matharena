@@ -17,6 +17,12 @@ export const Navbar = ({ currentPath, username }: Props) => {
 
       <nav id="side-nav" class="navbar__nav">
         <a
+          href="/questions"
+          aria-current={currentPath === "/questions" ? "page" : undefined}
+        >
+          Questions
+        </a>
+        <a
           href="/leaderboard"
           aria-current={currentPath === "/leaderboard" ? "page" : undefined}
         >
