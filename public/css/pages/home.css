@@ -6,12 +6,7 @@
   --foreground: #171717;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: system-ui, sans-serif;
@@ -222,7 +217,7 @@ body {
 
 /* Mobile */
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .hero {
     padding-top: 4rem;
   }

@@ -47,7 +47,7 @@
   line-height: 1.4;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .questions-page {
     margin: 1.8rem auto;
     padding: 0 1rem;

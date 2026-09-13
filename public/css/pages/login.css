@@ -108,7 +108,7 @@
   text-underline-offset: 3px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .login-page {
     padding: 1rem;
   }

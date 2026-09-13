@@ -47,7 +47,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .question-page {
     margin: 1.8rem auto;
     padding: 0 1rem;

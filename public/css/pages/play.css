@@ -227,7 +227,7 @@ button[type="submit"]:disabled {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   main {
     padding-bottom: 13vh;
   }
