@@ -196,6 +196,23 @@ button[type="submit"]:disabled {
   transform: translate(-50%, -50%);
 }
 
+.hint {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.hint a {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+.hint a:hover {
+  text-decoration: underline;
+}
+
 @keyframes toast-in {
   from {
     opacity: 0;

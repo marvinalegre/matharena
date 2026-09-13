@@ -45,6 +45,7 @@ playRoutes.get("/", async (c) => {
     props = {
       question: formattedQuestion,
       answer: question.answer,
+      code: randomQuestionCode in QUESTIONS ? randomQuestionCode : undefined,
     };
     return c.html(<PlayPage {...props} />);
   }
@@ -67,6 +68,7 @@ playRoutes.get("/", async (c) => {
   props = {
     question: formatQuestion(currentQuestion.code, currentQuestion.data),
     rating: await getRatingDisplay(c.env.DB, user.userId, randomQuestionCode),
+    code: currentQuestion.code in QUESTIONS ? currentQuestion.code : undefined,
   };
 
   return c.html(<PlayPage {...props} />);
@@ -94,6 +96,7 @@ playRoutes.post("/", async (c) => {
       <QuestionForm
         question={formattedQuestion}
         answer={String(question.answer)}
+        code={randomQuestionCode in QUESTIONS ? randomQuestionCode : undefined}
       />,
       200,
       {
@@ -171,6 +174,7 @@ playRoutes.post("/", async (c) => {
 
       <QuestionForm
         question={formatQuestion(newQuestion.code, newQuestion.data)}
+        code={newQuestion.code in QUESTIONS ? newQuestion.code : undefined}
       />
     </div>,
     200,

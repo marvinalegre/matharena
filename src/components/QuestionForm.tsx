@@ -1,6 +1,6 @@
 import type { PlayPageProps } from "@/pages/PlayPage";
 
-export const QuestionForm = ({ question, answer }: PlayPageProps) => (
+export const QuestionForm = ({ question, answer, code }: PlayPageProps) => (
   <form
     id="play-form"
     fx-action="/play"
@@ -10,6 +10,13 @@ export const QuestionForm = ({ question, answer }: PlayPageProps) => (
     ext-fx-disable
   >
     <p id="question">{question}</p>
+
+    {code && (
+      <div class="hint">
+        <a href={`/questions/${code}`}>Need a hint?</a>
+      </div>
+    )}
+
     <input
       name="answer"
       placeholder="Answer"

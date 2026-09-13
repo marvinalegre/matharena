@@ -8,6 +8,7 @@ import { Layout } from "@/layouts/Layout";
 export interface PlayPageProps {
   question: string | Child;
   answer?: string;
+  code?: string;
   rating?: {
     current: number;
     correct: number;
@@ -15,7 +16,7 @@ export interface PlayPageProps {
   };
 }
 
-export const PlayPage = ({ question, answer, rating }: PlayPageProps) => {
+export const PlayPage = ({ question, answer, rating, code }: PlayPageProps) => {
   return (
     <Layout
       links={
@@ -61,7 +62,7 @@ export const PlayPage = ({ question, answer, rating }: PlayPageProps) => {
             />
           )}
 
-          <QuestionForm question={question} answer={answer} />
+          <QuestionForm question={question} answer={answer} code={code} />
         </div>
 
         <div id="toast-container"></div>
