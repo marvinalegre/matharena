@@ -8,11 +8,18 @@ export const userRoutes = new Hono<AppEnv>();
 
 userRoutes.get("/:username", async (c) => {
   const username = c.req.param("username");
-  const user = await getUser(c.env.DB, username);
+  const requestedUser = await getUser(c.env.DB, username);
+  const user = await getUser(c.env.DB, c.get("user")?.userId);
 
-  if (!user) {
+  if (!requestedUser) {
     return c.notFound();
   }
 
-  return c.html(<UserPage username={user.username} rating={user.rating} />);
+  return c.html(
+    <UserPage
+      username={user?.username}
+      rating={requestedUser.rating}
+      requestedUsername={username}
+    />,
+  );
 });
