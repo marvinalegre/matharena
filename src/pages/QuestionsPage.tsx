@@ -22,17 +22,19 @@ export const QuestionsPage = ({ username, questions }: Props) => {
     <Layout links={<link rel="stylesheet" href="/css/pages/questions.css" />}>
       <Navbar currentPath="/questions" username={username} />
 
-      <main class="questions-page">
+      <main class="container">
         <h1>Questions</h1>
 
-        <div class="questions">
+        <ul class="questions">
           {Object.entries(questions).map(([code, question]) => (
-            <a class="question" href={`/questions/${code}`}>
-              <h2>{question.title}</h2>
-              <p>{question.description}</p>
-            </a>
+            <li>
+              <a class="question" href={`/questions/${code}`}>
+                <h2>{question.title}</h2>
+                <p>{question.description}</p>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </main>
     </Layout>
   );
