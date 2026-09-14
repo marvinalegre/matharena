@@ -31,3 +31,9 @@ main {
   line-height: 1;
   letter-spacing: -0.08em;
 }
+
+@media (max-width: 768px) {
+  .rating {
+    font-size: clamp(6rem, 40vw, 14rem);
+  }
+}
