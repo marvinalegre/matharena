@@ -17,7 +17,7 @@ main > h1 {
 
 .question {
   display: block;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 1rem;
 
   border: 1px solid var(--darker-border);
   border-radius: 10px;
@@ -29,12 +29,13 @@ main > h1 {
 
 .question h2 {
   margin: 0 0 0.35rem;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
+  color: black;
 }
 
 .question p {
-  color: #666;
-  font-size: 0.95rem;
+  color: var(--muted);
+  font-size: 1.15rem;
   line-height: 1.4;
 }
 
@@ -45,16 +46,5 @@ main > h1 {
 
   .question {
     width: 580px;
-  }
-
-  .question h2 {
-    margin: 0 0 0.45rem;
-    font-size: 1.35rem;
-  }
-
-  .question p {
-    color: var(--muted);
-    font-size: 1.1rem;
-    line-height: 1.6;
   }
 }

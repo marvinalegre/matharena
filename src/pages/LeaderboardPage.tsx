@@ -16,16 +16,14 @@ export const LeaderboardPage = ({ username, leaderboard }: Props) => {
     <Layout links={<link rel="stylesheet" href="/css/pages/leaderboard.css" />}>
       <Navbar currentPath="/leaderboard" username={username} />
 
-      <main class="leaderboard container">
-        <div class="leaderboard__header">
-          <h2>Leaderboard</h2>
-        </div>
+      <main class="container">
+        <h1>Leaderboard</h1>
 
-        <div class="leaderboard__list">
+        <ol class="users">
           {leaderboard.map((user, index) => (
-            <a href={`/${user.username}`}>
-              <div class="leaderboard__row">
-                <span class="leaderboard__rank emoji">
+            <li>
+              <a class="user" href={`/${user.username}`}>
+                <span class="rank emoji">
                   {index === 0
                     ? "🥇"
                     : index === 1
@@ -35,17 +33,13 @@ export const LeaderboardPage = ({ username, leaderboard }: Props) => {
                         : index + 1}
                 </span>
 
-                <span class="leaderboard__avatar">
-                  {user.username.charAt(0).toUpperCase()}
-                </span>
+                <span class="username">{user.username}</span>
 
-                <span class="leaderboard__name">{user.username}</span>
-
-                <span class="leaderboard__rating">{user.rating}</span>
-              </div>
-            </a>
+                <span class="rating">{user.rating}</span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
       </main>
     </Layout>
   );
