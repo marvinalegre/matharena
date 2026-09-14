@@ -15,19 +15,19 @@ import { LeaderboardUser } from "@/pages/LeaderboardPage";
 export const playRoutes = new Hono<AppEnv>();
 
 playRoutes.get("/", async (c) => {
-  const code = c.req.query("question");
+  const questionCode = c.req.query("question");
 
   let question;
   let formattedQuestion;
   let props;
 
-  if (code) {
-    if (!(code in QUESTIONS)) {
+  if (questionCode) {
+    if (!(questionCode in QUESTIONS)) {
       return c.notFound();
     }
 
-    question = forge(code);
-    formattedQuestion = formatQuestion(code, question.data);
+    question = forge(questionCode);
+    formattedQuestion = formatQuestion(questionCode, question.data);
 
     props = {
       question: formattedQuestion,
