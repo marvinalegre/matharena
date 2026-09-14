@@ -70,6 +70,21 @@ hr {
   text-decoration: none;
 }
 
+.dots {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000;
+  transform: translate(-50%, -50%);
+}
+
 @media (min-width: 768px) {
   .practice-button {
     padding: 1.1rem 5rem;
