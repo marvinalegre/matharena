@@ -1,6 +1,10 @@
 import type { PlayPageProps } from "@/pages/PlayPage";
 
-export const QuestionForm = ({ question, answer, code }: PlayPageProps) => (
+export const QuestionForm = ({
+  question,
+  answer,
+  questionCode,
+}: PlayPageProps) => (
   <form
     id="play-form"
     fx-action="/play"
@@ -11,9 +15,9 @@ export const QuestionForm = ({ question, answer, code }: PlayPageProps) => (
   >
     <p id="question">{question}</p>
 
-    {code && (
+    {questionCode && (
       <div class="hint">
-        <a href={`/questions/${code}`}>Need a hint?</a>
+        <a href={`/questions/${questionCode}`}>Need a hint?</a>
       </div>
     )}
 
