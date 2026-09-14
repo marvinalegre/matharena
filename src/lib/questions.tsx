@@ -3,16 +3,16 @@ export const QUESTIONS = {
     title: "Addition Without Carrying",
     description: "Add two single-digit numbers without carrying.",
     examples: [
-      { question: "3 + 4", answer: "7" },
-      { question: "2 + 6", answer: "8" },
+      { question: String.raw`\[2 + 2 = \; ?\]`, answer: "4" },
+      { question: String.raw`\[7 + 1 = \; ?\]`, answer: "8" },
     ],
   },
   "addition-single-digit-carry": {
     title: "Addition With Carrying",
     description: "Add two single-digit numbers with carrying.",
     examples: [
-      { question: "7 + 8", answer: "15" },
-      { question: "6 + 9", answer: "15" },
+      { question: String.raw`\[6 + 4 = \; ?\]`, answer: "10" },
+      { question: String.raw`\[3 + 9 = \; ?\]`, answer: "12" },
     ],
   },
 } as const;
