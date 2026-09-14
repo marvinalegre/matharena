@@ -36,12 +36,12 @@ playRoutes.get("/", async (c) => {
     return c.html(<PlayPage {...props} />);
   }
 
-  const randomQuestionCode = getRandomQuestionCode();
-  question = forge(randomQuestionCode);
-  formattedQuestion = formatQuestion(randomQuestionCode, question.data);
   const user = c.get("user");
-
   if (!user) {
+    const randomQuestionCode = getRandomQuestionCode();
+    question = forge(randomQuestionCode);
+    formattedQuestion = formatQuestion(randomQuestionCode, question.data);
+
     props = {
       question: formattedQuestion,
       answer: question.answer,
@@ -68,7 +68,7 @@ playRoutes.get("/", async (c) => {
 
   props = {
     question: formatQuestion(currentQuestion.code, currentQuestion.data),
-    rating: await getRatingDisplay(c.env.DB, user.userId, randomQuestionCode),
+    rating: await getRatingDisplay(c.env.DB, user.userId, currentQuestion.code),
     questionCode:
       currentQuestion.code in QUESTIONS ? currentQuestion.code : undefined,
   };
