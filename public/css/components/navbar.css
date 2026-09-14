@@ -182,6 +182,10 @@
 }
 
 @media (min-width: 768px) {
+  .navbar > * {
+    flex: 1;
+  }
+
   .navbar__menu-btn {
     display: none;
   }
@@ -199,7 +203,7 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: initial;
+    justify-content: center;
     gap: 2rem;
 
     transform: none;
@@ -210,5 +214,9 @@
 
   .navbar__nav a {
     font-size: 1.3rem;
+  }
+
+  .navbar__user-badge {
+    margin-left: auto;
   }
 }
