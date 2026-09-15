@@ -6,4 +6,5 @@ export const SUPPORTED_QUESTIONS = [
   "count-20-50-dots-in-columns",
   "ordinal-before-after-10",
   "place-value-2-digit",
+  "addition-single-double-digit-under-20",
 ] as const;

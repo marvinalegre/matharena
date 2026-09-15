@@ -15,6 +15,15 @@ export const QUESTIONS = {
       { question: <p>{String.raw`\[3 + 9 = \; ?\]`}</p>, answer: "12" },
     ],
   },
+  "addition-single-double-digit-under-20": {
+    title: "Addition Under 20",
+    description:
+      "Add a single-digit number and a two-digit number with a sum under 20.",
+    examples: [
+      { question: <p>{String.raw`\[16 + 2 = \; ?\]`}</p>, answer: "18" },
+      { question: <p>{String.raw`\[4 + 10 = \; ?\]`}</p>, answer: "14" },
+    ],
+  },
 
   "count-10-random-dots": {
     title: "Counting to 10",
