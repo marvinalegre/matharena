@@ -136,6 +136,13 @@ playRoutes.post("/", async (c) => {
     );
   }
 
+  const rateLimit = await c.env.ANSWER_LIMITER.limit({
+    key: String(user.userId),
+  });
+  if (!rateLimit.success) {
+    return c.html("<p>Too many requests</p>", 429);
+  }
+
   const sessionId = getCookie(c, "session") as string;
   const currentQuestion = (await getCurrentQuestion(
     c.env.KV,
