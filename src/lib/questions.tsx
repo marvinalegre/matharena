@@ -42,6 +42,15 @@ export const QUESTIONS = {
       { question: <p>{String.raw`\[9 - 2 = \; ?\]`}</p>, answer: "7" },
     ],
   },
+  "subtraction-double-single-digit-under-20": {
+    title: "Subtraction Under 20 With Borrowing",
+    description:
+      "Subtract a single-digit number from a two-digit number under 20 with borrowing.",
+    examples: [
+      { question: <p>{String.raw`\[11 - 2 = \; ?\]`}</p>, answer: "9" },
+      { question: <p>{String.raw`\[15 - 9 = \; ?\]`}</p>, answer: "6" },
+    ],
+  },
 
   "count-10-random-dots": {
     title: "Counting to 10",

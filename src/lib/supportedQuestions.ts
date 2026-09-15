@@ -5,6 +5,7 @@ export const SUPPORTED_QUESTIONS = [
   "addition-double-digit-under-100",
 
   "subtraction-single-digit-no-borrow",
+  "subtraction-double-single-digit-under-20",
 
   "count-10-random-dots",
   "count-20-random-dots",
