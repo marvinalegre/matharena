@@ -35,7 +35,9 @@ export const Layout = ({ links, scripts, children }: Props) => {
           {children}
 
           <footer class="container">
-            <a href="feedback">feedback</a>
+            <a href="/privacy-policy">privacy policy</a>
+            <a href="/terms-of-service">terms of service</a>
+            <a href="/feedback">feedback</a>
             <a href="https://github.com/marvinalegre/matharena" target="_blank">
               source code
             </a>

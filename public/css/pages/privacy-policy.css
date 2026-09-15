@@ -1,21 +1,4 @@
-html,
-body {
-  min-height: 100%;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.email {
-  color: var(--foreground);
-}
-
 main {
-  flex: 1;
-
   max-width: 680px;
   padding: 2rem 0;
   margin: 0 auto;

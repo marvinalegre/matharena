@@ -9,6 +9,8 @@ import { userRoutes } from "./userRoutes";
 import { leaderboardRoutes } from "./leaderboardRoutes";
 import { questionsRoutes } from "./questionsRoutes";
 import { feedbackRoutes } from "./feedbackRoutes";
+import { privacyPolicyRoutes } from "./privacyPolicy";
+import { termsOfServiceRoutes } from "./termsOfServiceRoutes";
 
 const routes = new Hono();
 
@@ -20,6 +22,8 @@ routes.route("/login", loginRoutes);
 routes.route("/logout", logoutRoutes);
 routes.route("/signup", signupRoutes);
 routes.route("/feedback", feedbackRoutes);
+routes.route("/privacy-policy", privacyPolicyRoutes);
+routes.route("/terms-of-service", termsOfServiceRoutes);
 routes.route("/", userRoutes);
 
 export default routes;
