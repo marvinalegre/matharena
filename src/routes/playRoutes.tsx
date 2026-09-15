@@ -229,6 +229,7 @@ function formatQuestion(code: string, data: any) {
     case "addition-single-digit-no-carry":
     case "addition-single-digit-carry":
     case "addition-single-double-digit-under-20":
+    case "addition-double-digit-under-100":
       return <p>{String.raw`\[${data.a} + ${data.b} = \; ?\]`}</p>;
 
     case "count-10-random-dots":

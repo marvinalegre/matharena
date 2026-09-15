@@ -20,8 +20,16 @@ export const QUESTIONS = {
     description:
       "Add a single-digit number and a two-digit number with a sum under 20.",
     examples: [
-      { question: <p>{String.raw`\[16 + 2 = \; ?\]`}</p>, answer: "18" },
+      { question: <p>{String.raw`\[2 + 16 = \; ?\]`}</p>, answer: "18" },
       { question: <p>{String.raw`\[4 + 10 = \; ?\]`}</p>, answer: "14" },
+    ],
+  },
+  "addition-double-digit-under-100": {
+    title: "Addition Under 100",
+    description: "Add two two-digit numbers with a sum under 100.",
+    examples: [
+      { question: <p>{String.raw`\[30 + 22 = \; ?\]`}</p>, answer: "52" },
+      { question: <p>{String.raw`\[42 + 55 = \; ?\]`}</p>, answer: "97" },
     ],
   },
 
