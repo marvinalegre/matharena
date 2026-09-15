@@ -61,6 +61,84 @@ export const QUESTIONS = {
     ],
   },
 
+  "count-coins-20": {
+    title: "Counting Coins",
+    description:
+      "Count coins with values of 1, 5, and 10 berries to find the total.",
+    info: (
+      <div class="info">
+        <h3>Berry Coins</h3>
+        <p class="subtitle">
+          Each coin is worth a different number of berries.
+        </p>
+
+        <div class="coin-legend">
+          <div class="legend-item">
+            <div class="coin coin-1">1</div>
+            <span>1 berry</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="coin coin-5">5</div>
+            <span>5 berries</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="coin coin-10">10</div>
+            <span>10 berries</span>
+          </div>
+        </div>
+      </div>
+    ),
+
+    examples: [
+      {
+        question: (
+          <>
+            <div class="coins">
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-10">10</div>
+            </div>
+            <p class="text-center">How many berries is that?</p>
+          </>
+        ),
+        answer: "13",
+      },
+      {
+        question: (
+          <>
+            <div class="coins">
+              <div class="coin coin-5">5</div>
+              <div class="coin coin-5">5</div>
+              <div class="coin coin-10">10</div>
+            </div>
+            <p class="text-center">How many berries is that?</p>
+          </>
+        ),
+        answer: "20",
+      },
+      {
+        question: (
+          <>
+            <div class="coins">
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-1">1</div>
+            </div>
+            <p class="text-center">How many berries is that?</p>
+          </>
+        ),
+        answer: "7",
+      },
+    ],
+  },
+
   "count-10-random-dots": {
     title: "Counting to 10",
     description: "Count the number of dots.",

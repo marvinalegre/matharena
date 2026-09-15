@@ -50,6 +50,7 @@ export const QuestionPage = ({ code, username }: Props) => {
         <p>{question.description}</p>
 
         <h2>Examples</h2>
+        {"info" in question && question.info}
         <ul class="examples">
           {question.examples.map((example) => (
             <li class="example">

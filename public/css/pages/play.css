@@ -36,6 +36,7 @@ form {
 
 #question {
   font-size: 2rem;
+  padding-bottom: 2rem;
 }
 
 input[name="answer"] {
@@ -163,6 +164,124 @@ button[type="submit"]:disabled {
   transform: translate(-50%, -50%);
 }
 
+h3 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.berry-coins .info {
+  opacity: 0.81;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1rem;
+  text-align: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.berry-coins {
+  width: 100%;
+}
+
+.coin-legend {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.legend-item {
+  min-width: 95px;
+  padding: 0.75rem 1rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+}
+
+.legend-item:first-child {
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+.legend-item:last-child {
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.legend-item + .legend-item {
+  border-left: 0;
+}
+
+.legend-item span {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.coins {
+  min-height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.coin {
+  display: grid;
+  place-items: center;
+  flex: none;
+  border: 3px solid;
+  border-radius: 50%;
+  font-size: 1.15rem;
+  font-weight: 750;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.45),
+    0 2px 3px rgba(0, 0, 0, 0.08);
+}
+
+.coin-1 {
+  width: 4rem;
+  height: 4rem;
+  background: #d98b5f;
+  border-color: #b96d43;
+}
+
+.coin-5 {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: #d7d7d7;
+  border-color: #a8a8a8;
+}
+
+.coin-10 {
+  width: 5rem;
+  height: 5rem;
+  background: #f2c94c;
+  border-color: #d0a817;
+}
+
+.coin-legend .coin-1 {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 0.9rem;
+}
+
+.coin-legend .coin-5 {
+  width: 3.1rem;
+  height: 3.1rem;
+  font-size: 0.9rem;
+}
+
+.coin-legend .coin-10 {
+  width: 3.4rem;
+  height: 3.4rem;
+  font-size: 0.9rem;
+}
+
 .hint {
   width: 80%;
   margin: 0 auto;
@@ -200,5 +319,15 @@ button[type="submit"]:disabled {
   }
   .rating-display {
     max-width: 450px;
+  }
+
+  .legend-item {
+    min-width: 0;
+    flex: 1;
+    padding-inline: 0.5rem;
+  }
+
+  .coins {
+    gap: 1rem;
   }
 }

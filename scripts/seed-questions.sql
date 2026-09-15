@@ -8,6 +8,7 @@ VALUES
   ('subtraction-single-digit-no-borrow', 850),
   ('subtraction-double-single-digit-under-20', 870),
   ('subtraction-double-digit-under-100', 890),
+  ('count-coins-20', 915),
   ('count-10-random-dots', 700),
   ('count-20-random-dots', 730),
   ('count-20-50-dots-in-columns', 775),

@@ -261,6 +261,11 @@ function formatQuestion(code: string, data: any) {
           {String.raw`\(${data.number}\)`}?
         </p>
       );
+
+    case "count-coins-20":
+      return (
+        <BerryCoins ones={data.ones} fives={data.fives} tens={data.tens} />
+      );
   }
 
   throw new Error("Formatter: Invalid question code");
@@ -359,4 +364,54 @@ function ordinal(n: number) {
       : ["th", "st", "nd", "rd"][n % 10] || "th";
 
   return `${n}${suffix}`;
+}
+
+type BerryCoinsProps = {
+  ones: number;
+  fives: number;
+  tens: number;
+};
+
+function BerryCoins({ ones, fives, tens }: BerryCoinsProps) {
+  const coins = [
+    ...Array(ones).fill(1),
+    ...Array(fives).fill(5),
+    ...Array(tens).fill(10),
+  ];
+
+  return (
+    <div class="berry-coins">
+      <div class="info">
+        <h3>Berry Coins</h3>
+        <p class="subtitle">
+          Each coin is worth a different number of berries.
+        </p>
+
+        <div class="coin-legend">
+          <div class="legend-item">
+            <div class="coin coin-1">1</div>
+            <span>1 berry</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="coin coin-5">5</div>
+            <span>5 berries</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="coin coin-10">10</div>
+            <span>10 berries</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="coins">
+        {coins.map((value) => (
+          <div class={`coin coin-${value}`}>{value}</div>
+        ))}
+      </div>
+
+      <p class="text-center">How many berries is that?</p>
+    </div>
+  );
 }
