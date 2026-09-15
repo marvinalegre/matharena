@@ -228,4 +228,25 @@ export const QUESTIONS = {
       },
     ],
   },
+
+  "ordinal-before-after-10": {
+    title: "Before and After Ordinals (10th)",
+    description:
+      "Identify the ordinal that comes before or after a given ordinal.",
+
+    examples: [
+      {
+        question: (
+          <p class="text-center my-3">{String.raw`What comes after \(6th\)?`}</p>
+        ),
+        answer: "7th",
+      },
+      {
+        question: (
+          <p class="text-center my-3">{String.raw`What comes before \(2nd\)?`}</p>
+        ),
+        answer: "1st",
+      },
+    ],
+  },
 } as const;

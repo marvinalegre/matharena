@@ -5,4 +5,5 @@ VALUES
   ('addition-single-digit-carry', 800),
   ('count-10-random-dots', 700),
   ('count-20-random-dots', 730),
-  ('count-20-50-dots-in-columns', 775);
+  ('count-20-50-dots-in-columns', 775),
+  ('ordinal-before-after-10', 800);

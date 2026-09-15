@@ -4,4 +4,5 @@ export const SUPPORTED_QUESTIONS = [
   "count-10-random-dots",
   "count-20-random-dots",
   "count-20-50-dots-in-columns",
+  "ordinal-before-after-10",
 ] as const;

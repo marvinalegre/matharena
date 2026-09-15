@@ -239,6 +239,14 @@ function formatQuestion(code: string, data: any) {
           <Dots dots={data.dots} />
         </>
       );
+
+    case "ordinal-before-after-10":
+      return (
+        <p class="text-center my-3">
+          What comes {data.direction === 1 ? "after" : "before"}{" "}
+          {String.raw`\(${ordinal(data.n)}\)`}?
+        </p>
+      );
   }
 
   throw new Error("Formatter: Invalid question code");
@@ -328,4 +336,13 @@ function Dots({ dots }: { dots: Dot[] }) {
       ))}
     </div>
   );
+}
+
+function ordinal(n: number) {
+  const suffix =
+    n % 100 >= 11 && n % 100 <= 13
+      ? "th"
+      : ["th", "st", "nd", "rd"][n % 10] || "th";
+
+  return `${n}${suffix}`;
 }
