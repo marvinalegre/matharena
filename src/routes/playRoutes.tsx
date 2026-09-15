@@ -228,7 +228,7 @@ function formatQuestion(code: string, data: any) {
   switch (code) {
     case "addition-single-digit-no-carry":
     case "addition-single-digit-carry":
-      return `\\[${data.a} + ${data.b} = \\; ?\\]`;
+      return <p>{String.raw`\[${data.a} + ${data.b} = \; ?\]`}</p>;
 
     case "count-10-random-dots":
     case "count-20-random-dots":
