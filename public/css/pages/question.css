@@ -106,6 +106,13 @@ h3 {
   width: 100%;
 }
 
+.money-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
 .coin-legend {
   display: flex;
   justify-content: center;
@@ -121,18 +128,6 @@ h3 {
   gap: 0.5rem;
   border: 1px solid var(--border);
   background: var(--secondary);
-}
-
-.legend-item:first-child {
-  border-radius: 0.75rem 0 0 0.75rem;
-}
-
-.legend-item:last-child {
-  border-radius: 0 0.75rem 0.75rem 0;
-}
-
-.legend-item + .legend-item {
-  border-left: 0;
 }
 
 .legend-item span {
@@ -185,6 +180,49 @@ h3 {
   border-color: #d0a817;
 }
 
+.bill {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 9rem;
+  height: 4.5rem;
+  border: 3px solid;
+  border-radius: 0.1rem;
+  background: #b8d8b8;
+  border-color: #7fa87f;
+  font-size: 1.5rem;
+  font-weight: 750;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
+}
+
+.money-legend .coin-1,
+.coin-legend .coin-1 {
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 0.9rem;
+}
+
+.money-legend .coin-5,
+.coin-legend .coin-5 {
+  width: 3.1rem;
+  height: 3.1rem;
+  font-size: 0.9rem;
+}
+
+.money-legend .coin-10,
+.coin-legend .coin-10 {
+  width: 3.4rem;
+  height: 3.4rem;
+  font-size: 0.9rem;
+}
+
+.money-legend .bill,
+.coin-legend .bill {
+  width: 5rem;
+  height: 3rem;
+  font-size: 1rem;
+}
+
 @media (min-width: 768px) {
   .practice-button {
     padding: 1.1rem 5rem;
@@ -197,5 +235,10 @@ h3 {
 
   .coins {
     gap: 1rem;
+  }
+
+  .money-legend {
+    max-width: 400px;
+    margin: 2rem auto;
   }
 }

@@ -266,6 +266,16 @@ function formatQuestion(code: string, data: any) {
       return (
         <BerryCoins ones={data.ones} fives={data.fives} tens={data.tens} />
       );
+
+    case "count-money-100":
+      return (
+        <BerryMoney
+          ones={data.ones}
+          fives={data.fives}
+          tens={data.tens}
+          fifties={data.fifties}
+        />
+      );
   }
 
   throw new Error("Formatter: Invalid question code");
@@ -409,6 +419,66 @@ function BerryCoins({ ones, fives, tens }: BerryCoinsProps) {
         {coins.map((value) => (
           <div class={`coin coin-${value}`}>{value}</div>
         ))}
+      </div>
+
+      <p class="text-center">How many berries is that?</p>
+    </div>
+  );
+}
+
+type BerryMoneyProps = {
+  ones: number;
+  fives: number;
+  tens: number;
+  fifties: number;
+};
+
+function BerryMoney({ ones, fives, tens, fifties }: BerryMoneyProps) {
+  const coins = [
+    ...Array(ones).fill(1),
+    ...Array(fives).fill(5),
+    ...Array(tens).fill(10),
+    ...Array(fifties).fill(50),
+  ];
+
+  return (
+    <div class="berry-coins">
+      <div class="info">
+        <h3>Berry Money</h3>
+        <p class="subtitle">
+          Each coin and bill is worth a different number of berries.
+        </p>
+
+        <div class="money-legend">
+          <div class="legend-item">
+            <div class="coin coin-1">1</div>
+            <span>1 berry</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="coin coin-5">5</div>
+            <span>5 berries</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="coin coin-10">10</div>
+            <span>10 berries</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="bill">50</div>
+            <span>50 berries</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="coins">
+        {coins.map((value) => {
+          if (value === 50) {
+            return <div class={`bill`}>{value}</div>;
+          }
+          return <div class={`coin coin-${value}`}>{value}</div>;
+        })}
       </div>
 
       <p class="text-center">How many berries is that?</p>

@@ -9,6 +9,7 @@ export const SUPPORTED_QUESTIONS = [
   "subtraction-double-digit-under-100",
 
   "count-coins-20",
+  "count-money-100",
 
   "count-10-random-dots",
   "count-20-random-dots",

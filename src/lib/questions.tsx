@@ -138,6 +138,66 @@ export const QUESTIONS = {
       },
     ],
   },
+  "count-money-100": {
+    title: "Counting Money Under 100",
+    description:
+      "Count coins and bills to find the total value in berries, up to 100.",
+    info: (
+      <div class="money-legend">
+        <div class="legend-item">
+          <div class="coin coin-1">1</div>
+          <span>1 berry</span>
+        </div>
+
+        <div class="legend-item">
+          <div class="coin coin-5">5</div>
+          <span>5 berries</span>
+        </div>
+
+        <div class="legend-item">
+          <div class="coin coin-10">10</div>
+          <span>10 berries</span>
+        </div>
+
+        <div class="legend-item">
+          <div class="bill">50</div>
+          <span>50 berries</span>
+        </div>
+      </div>
+    ),
+    examples: [
+      {
+        question: (
+          <>
+            <div class="coins">
+              <div class="coin coin-1">1</div>
+              <div class="coin coin-5">5</div>
+              <div class="coin coin-10">10</div>
+              <div class="coin coin-10">10</div>
+              <div class="bill">50</div>
+            </div>
+            <p class="text-center">How many berries is that?</p>
+          </>
+        ),
+        answer: "76",
+      },
+      {
+        question: (
+          <>
+            <div class="coins">
+              <div class="coin coin-10">10</div>
+              <div class="coin coin-10">10</div>
+              <div class="coin coin-10">10</div>
+              <div class="coin coin-10">10</div>
+              <div class="bill">50</div>
+            </div>
+            <p class="text-center">How many berries is that?</p>
+          </>
+        ),
+        answer: "90",
+      },
+    ],
+  },
 
   "count-10-random-dots": {
     title: "Counting to 10",
