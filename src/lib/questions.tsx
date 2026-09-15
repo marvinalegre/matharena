@@ -51,6 +51,15 @@ export const QUESTIONS = {
       { question: <p>{String.raw`\[15 - 9 = \; ?\]`}</p>, answer: "6" },
     ],
   },
+  "subtraction-double-digit-under-100": {
+    title: "Subtraction Under 100",
+    description:
+      "Subtract one two-digit number from another with a positive result under 100.",
+    examples: [
+      { question: <p>{String.raw`\[50 - 35 = \; ?\]`}</p>, answer: "15" },
+      { question: <p>{String.raw`\[42 - 23 = \; ?\]`}</p>, answer: "19" },
+    ],
+  },
 
   "count-10-random-dots": {
     title: "Counting to 10",

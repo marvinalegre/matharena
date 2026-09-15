@@ -234,6 +234,7 @@ function formatQuestion(code: string, data: any) {
 
     case "subtraction-single-digit-no-borrow":
     case "subtraction-double-single-digit-under-20":
+    case "subtraction-double-digit-under-100":
       return <p>{String.raw`\[${data.a} - ${data.b} = \; ?\]`}</p>;
 
     case "count-10-random-dots":

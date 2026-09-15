@@ -6,6 +6,7 @@ export const SUPPORTED_QUESTIONS = [
 
   "subtraction-single-digit-no-borrow",
   "subtraction-double-single-digit-under-20",
+  "subtraction-double-digit-under-100",
 
   "count-10-random-dots",
   "count-20-random-dots",
