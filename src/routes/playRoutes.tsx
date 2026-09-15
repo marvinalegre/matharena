@@ -31,7 +31,7 @@ playRoutes.get("/", async (c) => {
 
     props = {
       question: formattedQuestion,
-      answer: question.answer,
+      answer: String(question.answer),
     };
     return c.html(<PlayPage {...props} />);
   }
@@ -44,7 +44,7 @@ playRoutes.get("/", async (c) => {
 
     props = {
       question: formattedQuestion,
-      answer: question.answer,
+      answer: String(question.answer),
       questionCode:
         randomQuestionCode in QUESTIONS ? randomQuestionCode : undefined,
     };
@@ -231,6 +231,9 @@ function formatQuestion(code: string, data: any) {
     case "addition-single-double-digit-under-20":
     case "addition-double-digit-under-100":
       return <p>{String.raw`\[${data.a} + ${data.b} = \; ?\]`}</p>;
+
+    case "subtraction-single-digit-no-borrow":
+      return <p>{String.raw`\[${data.a} - ${data.b} = \; ?\]`}</p>;
 
     case "count-10-random-dots":
     case "count-20-random-dots":

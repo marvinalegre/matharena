@@ -1,6 +1,6 @@
 export const QUESTIONS = {
   "addition-single-digit-no-carry": {
-    title: "Addition Without Carrying",
+    title: "Single Digit Addition Without Carrying",
     description: "Add two single-digit numbers without carrying.",
     examples: [
       { question: <p>{String.raw`\[2 + 2 = \; ?\]`}</p>, answer: "4" },
@@ -8,7 +8,7 @@ export const QUESTIONS = {
     ],
   },
   "addition-single-digit-carry": {
-    title: "Addition With Carrying",
+    title: "Single Digit Addition With Carrying",
     description: "Add two single-digit numbers with carrying.",
     examples: [
       { question: <p>{String.raw`\[6 + 4 = \; ?\]`}</p>, answer: "10" },
@@ -30,6 +30,16 @@ export const QUESTIONS = {
     examples: [
       { question: <p>{String.raw`\[30 + 22 = \; ?\]`}</p>, answer: "52" },
       { question: <p>{String.raw`\[42 + 55 = \; ?\]`}</p>, answer: "97" },
+    ],
+  },
+
+  "subtraction-single-digit-no-borrow": {
+    title: "Single Digit Subtraction Without Borrowing",
+    description:
+      "Subtract one single-digit number from another without borrowing.",
+    examples: [
+      { question: <p>{String.raw`\[7 - 6 = \; ?\]`}</p>, answer: "1" },
+      { question: <p>{String.raw`\[9 - 2 = \; ?\]`}</p>, answer: "7" },
     ],
   },
 
