@@ -247,6 +247,13 @@ function formatQuestion(code: string, data: any) {
           {String.raw`\(${ordinal(data.n)}\)`}?
         </p>
       );
+    case "place-value-2-digit":
+      return (
+        <p class="text-center my-3">
+          What is the place value of {String.raw`\(${data.digit}\)`} in{" "}
+          {String.raw`\(${data.number}\)`}?
+        </p>
+      );
   }
 
   throw new Error("Formatter: Invalid question code");

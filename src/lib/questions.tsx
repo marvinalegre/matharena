@@ -249,4 +249,29 @@ export const QUESTIONS = {
       },
     ],
   },
+
+  "place-value-2-digit": {
+    title: "Place Value in Two-Digit Numbers",
+    description: "Identify the place value of a digit in a two-digit number.",
+    examples: [
+      {
+        question: (
+          <p class="text-center my-3">{String.raw`What is the place value of \(4\) in \(47\)?`}</p>
+        ),
+        answer: "tens",
+      },
+      {
+        question: (
+          <p class="text-center my-3">{String.raw`What is the place value of \(6\) in \(63\)?`}</p>
+        ),
+        answer: "tens",
+      },
+      {
+        question: (
+          <p class="text-center my-3">{String.raw`What is the place value of \(8\) in \(28\)?`}</p>
+        ),
+        answer: "ones",
+      },
+    ],
+  },
 } as const;
