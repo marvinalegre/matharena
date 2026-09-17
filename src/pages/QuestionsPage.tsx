@@ -1,14 +1,16 @@
+import { Child } from "hono/jsx";
 import { Navbar } from "@/components/Navbar";
 import { Layout } from "@/layouts/Layout";
 
 interface Question {
   title: string;
   description: string;
+  info?: Child;
   examples: readonly Example[];
 }
 
 interface Example {
-  question: string;
+  question: Child;
   answer: string;
 }
 
