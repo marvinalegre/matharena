@@ -237,12 +237,16 @@ function formatQuestion(code: string, data: any) {
     case "addition-single-digit-carry":
     case "addition-single-double-digit-under-20":
     case "addition-double-digit-under-100":
-      return <p>{String.raw`\[${data.a} + ${data.b} = \; ?\]`}</p>;
+      return (
+        <p class="one-liner">{String.raw`\[${data.a} + ${data.b} = \; ?\]`}</p>
+      );
 
     case "subtraction-single-digit-no-borrow":
     case "subtraction-double-single-digit-under-20":
     case "subtraction-double-digit-under-100":
-      return <p>{String.raw`\[${data.a} - ${data.b} = \; ?\]`}</p>;
+      return (
+        <p class="one-liner">{String.raw`\[${data.a} - ${data.b} = \; ?\]`}</p>
+      );
 
     case "count-10-random-dots":
     case "count-20-random-dots":
@@ -256,14 +260,14 @@ function formatQuestion(code: string, data: any) {
 
     case "ordinal-before-after-10":
       return (
-        <p class="text-center my-3">
+        <p class="text-center one-liner">
           What comes {data.direction === 1 ? "after" : "before"}{" "}
           {String.raw`\(${ordinal(data.n)}\)`}?
         </p>
       );
     case "place-value-2-digit":
       return (
-        <p class="text-center my-3">
+        <p class="text-center one-liner">
           What is the place value of {String.raw`\(${data.digit}\)`} in{" "}
           {String.raw`\(${data.number}\)`}?
         </p>

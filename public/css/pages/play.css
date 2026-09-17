@@ -1,14 +1,5 @@
-body {
-  display: flex;
-  flex-direction: column;
-}
-
 main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
+  margin: 1rem 0 6rem;
 }
 
 p {
@@ -19,7 +10,10 @@ p {
   color: var(--subtle);
 }
 
-footer,
+footer {
+  display: none;
+}
+
 .navbar__menu-btn,
 .navbar__nav,
 .navbar__user-badge {
@@ -32,11 +26,17 @@ form {
   gap: 0.8rem;
 
   max-width: 350px;
+  margin: 0 auto;
 }
 
 #question {
-  font-size: 2rem;
-  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.one-liner {
+  font-size: 1.75rem;
+
+  padding: 3.5rem 0;
 }
 
 input[name="answer"] {
@@ -132,8 +132,11 @@ button[type="submit"]:disabled {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+
+  margin: 0 auto;
   width: 100%;
   max-width: 300px;
+
   font-size: 0.85rem;
 }
 
@@ -151,6 +154,7 @@ button[type="submit"]:disabled {
 }
 
 .dots {
+  margin-top: 1.5rem;
   position: relative;
   width: 100%;
   aspect-ratio: 1;
@@ -335,9 +339,6 @@ h3 {
 }
 
 @media (min-width: 768px) {
-  main {
-    margin: 1.8rem 0;
-  }
   .rating-display {
     max-width: 450px;
   }
