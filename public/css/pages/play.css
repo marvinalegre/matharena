@@ -209,18 +209,6 @@ h3 {
   background: var(--secondary);
 }
 
-.legend-item:first-child {
-  border-radius: 0.75rem 0 0 0.75rem;
-}
-
-.legend-item:last-child {
-  border-radius: 0 0.75rem 0.75rem 0;
-}
-
-.legend-item + .legend-item {
-  border-left: 0;
-}
-
 .legend-item span {
   font-size: 0.8rem;
   font-weight: 600;
