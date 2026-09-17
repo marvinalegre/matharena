@@ -13,7 +13,7 @@ export const QuestionForm = ({
     fx-swap="outerHTML"
     ext-fx-disable
   >
-    <div id="question">{question}</div>
+    <div class="question">{question}</div>
 
     {questionCode && (
       <div class="hint">
