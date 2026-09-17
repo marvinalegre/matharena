@@ -17,7 +17,9 @@ export const QuestionForm = ({
 
     {questionCode && (
       <div class="hint">
-        <a href={`/questions/${questionCode}`}>Need a hint?</a>
+        <a href={`/questions/${questionCode}`} target="_blank" rel="noopener ">
+          Need a hint?
+        </a>
       </div>
     )}
 
