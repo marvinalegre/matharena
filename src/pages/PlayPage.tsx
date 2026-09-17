@@ -7,7 +7,7 @@ import { Layout } from "@/layouts/Layout";
 
 export interface PlayPageProps {
   question: string | Child;
-  answer?: string;
+  correctAnswer?: string;
   questionCode?: string;
   rating?: {
     current: number;
@@ -18,7 +18,7 @@ export interface PlayPageProps {
 
 export const PlayPage = ({
   question,
-  answer,
+  correctAnswer,
   rating,
   questionCode,
 }: PlayPageProps) => {
@@ -69,7 +69,7 @@ export const PlayPage = ({
 
           <QuestionForm
             question={question}
-            answer={answer}
+            correctAnswer={correctAnswer}
             questionCode={questionCode}
           />
         </div>

@@ -2,7 +2,7 @@ import type { PlayPageProps } from "@/pages/PlayPage";
 
 export const QuestionForm = ({
   question,
-  answer,
+  correctAnswer,
   questionCode,
 }: PlayPageProps) => (
   <form
@@ -28,7 +28,9 @@ export const QuestionForm = ({
       required
       ext-fx-disable-target
     />
-    {answer && <input type="hidden" name="correctAnswer" value={answer} />}
+    {correctAnswer && (
+      <input type="hidden" name="correctAnswer" value={correctAnswer} />
+    )}
     <button type="submit" ext-fx-disable-target>
       Submit
     </button>

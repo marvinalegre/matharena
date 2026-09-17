@@ -19,7 +19,6 @@ playRoutes.get("/", async (c) => {
 
   let question;
   let formattedQuestion;
-  let props;
 
   if (questionCode) {
     if (!(questionCode in QUESTIONS)) {
@@ -29,11 +28,12 @@ playRoutes.get("/", async (c) => {
     question = forge(questionCode);
     formattedQuestion = formatQuestion(questionCode, question.data);
 
-    props = {
-      question: formattedQuestion,
-      answer: String(question.answer),
-    };
-    return c.html(<PlayPage {...props} />);
+    return c.html(
+      <PlayPage
+        question={formattedQuestion}
+        correctAnswer={String(question.answer)}
+      />,
+    );
   }
 
   const user = c.get("user");
@@ -42,13 +42,15 @@ playRoutes.get("/", async (c) => {
     question = forge(randomQuestionCode);
     formattedQuestion = formatQuestion(randomQuestionCode, question.data);
 
-    props = {
-      question: formattedQuestion,
-      answer: String(question.answer),
-      questionCode:
-        randomQuestionCode in QUESTIONS ? randomQuestionCode : undefined,
-    };
-    return c.html(<PlayPage {...props} />);
+    return c.html(
+      <PlayPage
+        question={formattedQuestion}
+        correctAnswer={String(question.answer)}
+        questionCode={
+          randomQuestionCode in QUESTIONS ? randomQuestionCode : undefined
+        }
+      />,
+    );
   }
 
   const userWithRating = (await getUser(
@@ -66,14 +68,19 @@ playRoutes.get("/", async (c) => {
       sessionId,
     ));
 
-  props = {
-    question: formatQuestion(currentQuestion.code, currentQuestion.data),
-    rating: await getRatingDisplay(c.env.DB, user.userId, currentQuestion.code),
-    questionCode:
-      currentQuestion.code in QUESTIONS ? currentQuestion.code : undefined,
-  };
-
-  return c.html(<PlayPage {...props} />);
+  return c.html(
+    <PlayPage
+      question={formatQuestion(currentQuestion.code, currentQuestion.data)}
+      rating={await getRatingDisplay(
+        c.env.DB,
+        user.userId,
+        currentQuestion.code,
+      )}
+      questionCode={
+        currentQuestion.code in QUESTIONS ? currentQuestion.code : undefined
+      }
+    />,
+  );
 });
 
 playRoutes.post("/", async (c) => {
@@ -99,7 +106,7 @@ playRoutes.post("/", async (c) => {
     return c.html(
       <QuestionForm
         question={formattedQuestion}
-        answer={String(question.answer)}
+        correctAnswer={String(question.answer)}
       />,
       200,
       {
@@ -122,7 +129,7 @@ playRoutes.post("/", async (c) => {
     return c.html(
       <QuestionForm
         question={formattedQuestion}
-        answer={String(question.answer)}
+        correctAnswer={String(question.answer)}
         questionCode={
           randomQuestionCode in QUESTIONS ? randomQuestionCode : undefined
         }
