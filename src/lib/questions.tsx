@@ -143,25 +143,32 @@ export const QUESTIONS = {
     description:
       "Count coins and bills to find the total value in berries, up to 100.",
     info: (
-      <div class="money-legend">
-        <div class="legend-item">
-          <div class="coin coin-1">1</div>
-          <span>1 berry</span>
-        </div>
+      <div class="info">
+        <h3>Berry Money</h3>
+        <p class="subtitle">
+          Each coin and bill is worth a different number of berries.
+        </p>
 
-        <div class="legend-item">
-          <div class="coin coin-5">5</div>
-          <span>5 berries</span>
-        </div>
+        <div class="money-legend">
+          <div class="legend-item">
+            <div class="coin coin-1">1</div>
+            <span>1 berry</span>
+          </div>
 
-        <div class="legend-item">
-          <div class="coin coin-10">10</div>
-          <span>10 berries</span>
-        </div>
+          <div class="legend-item">
+            <div class="coin coin-5">5</div>
+            <span>5 berries</span>
+          </div>
 
-        <div class="legend-item">
-          <div class="bill">50</div>
-          <span>50 berries</span>
+          <div class="legend-item">
+            <div class="coin coin-10">10</div>
+            <span>10 berries</span>
+          </div>
+
+          <div class="legend-item">
+            <div class="bill">50</div>
+            <span>50 berries</span>
+          </div>
         </div>
       </div>
     ),
