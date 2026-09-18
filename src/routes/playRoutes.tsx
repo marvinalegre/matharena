@@ -111,7 +111,8 @@ playRoutes.post("/", async (c) => {
       200,
       {
         "FX-Trigger": JSON.stringify({
-          showToast: answer === correctAnswer ? "correct" : "wrong",
+          showToast:
+            answer.trim().toLowerCase() === correctAnswer ? "correct" : "wrong",
         }),
       },
     );
@@ -137,7 +138,8 @@ playRoutes.post("/", async (c) => {
       200,
       {
         "FX-Trigger": JSON.stringify({
-          showToast: answer === correctAnswer ? "correct" : "wrong",
+          showToast:
+            answer.trim().toLowerCase() === correctAnswer ? "correct" : "wrong",
         }),
       },
     );
@@ -155,7 +157,8 @@ playRoutes.post("/", async (c) => {
     c.env.KV,
     sessionId,
   )) as CurrentQuestion;
-  const isCorrect = answer === String(currentQuestion.answer);
+  const isCorrect =
+    answer.trim().toLowerCase() === String(currentQuestion.answer);
 
   // TODO: use Promise.all or turn to one big query
   const questionRating = (await c.env.DB.prepare(
