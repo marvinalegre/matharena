@@ -423,7 +423,14 @@ export const QUESTIONS = {
     title: "Before and After Ordinals (10th)",
     description:
       "Identify the ordinal that comes before or after a given ordinal.",
-
+    info: (
+      <div
+        class="info text-center"
+        style="font-size: 1.3rem; margin: 1.5rem 0 3rem"
+      >
+        \(1st \; 2nd \; 3rd \; 4th \; 5th \; 6th \; 7th \; 8th \; 9th \)
+      </div>
+    ),
     examples: [
       {
         question: (
@@ -443,6 +450,21 @@ export const QUESTIONS = {
   "place-value-2-digit": {
     title: "Place Value in Two-Digit Numbers",
     description: "Identify the place value of a digit in a two-digit number.",
+    info: (
+      <div
+        class="info"
+        style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: space-evenly; font-size: 1.3rem; margin: 1.5rem 0 3rem;"
+      >
+        <div>
+          <span>\(\underline{4}2\)</span>
+          <div>tens</div>
+        </div>
+        <div>
+          <span>\(4\underline{2}\)</span>
+          <div>ones</div>
+        </div>
+      </div>
+    ),
     examples: [
       {
         question: (
