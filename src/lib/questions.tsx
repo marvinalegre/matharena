@@ -1,4 +1,34 @@
 export const QUESTIONS = {
+  "alphabet-constant-step": {
+    title: "Alphabet Constant Step",
+    description: "Find the next letter in a sequence with a constant step.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"a d g j m _"}</p>
+          </div>
+        ),
+        answer: "p",
+      },
+
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"b e h k n _"}</p>
+          </div>
+        ),
+        answer: "q",
+      },
+    ],
+  },
+
   "addition-single-digit-no-carry": {
     title: "Single Digit Addition Without Carrying",
     description: "Add two single-digit numbers without carrying.",

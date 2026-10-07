@@ -236,6 +236,14 @@ playRoutes.post("/", async (c) => {
 
 function formatQuestion(code: string, data: any) {
   switch (code) {
+    case "alphabet-constant-step":
+      return (
+        <div class="my-3">
+          <p class="text-center">What is the missing letter in the sequence?</p>
+          <p class="alphabet-sequence">{data.sequence}</p>
+        </div>
+      );
+
     case "addition-single-digit-no-carry":
     case "addition-single-digit-carry":
     case "addition-single-double-digit-under-20":

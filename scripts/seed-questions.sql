@@ -1,6 +1,7 @@
 INSERT
 OR IGNORE INTO questions (code, rating)
 VALUES
+  ('alphabet-constant-step', 900),
   ('addition-single-digit-no-carry', 800),
   ('addition-single-digit-carry', 800),
   ('addition-single-double-digit-under-20', 820),

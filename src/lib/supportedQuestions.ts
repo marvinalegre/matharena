@@ -1,4 +1,6 @@
 export const SUPPORTED_QUESTIONS = [
+  "alphabet-constant-step",
+
   "addition-single-digit-no-carry",
   "addition-single-digit-carry",
   "addition-single-double-digit-under-20",
