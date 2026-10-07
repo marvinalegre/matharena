@@ -254,8 +254,33 @@ function formatQuestion(code: string, data: any) {
     case "subtraction-single-digit-no-borrow":
     case "subtraction-double-single-digit-under-20":
     case "subtraction-double-digit-under-100":
+    case "subtraction-two-digit-three-digit":
+    case "subtraction-two-digit-four-digit":
+    case "subtraction-four-digit-four-digit":
+    case "subtraction-four-digit-five-digit":
+    case "subtraction-four-digit-six-digit":
       return (
-        <p class="one-liner">{String.raw`\[${data.a} - ${data.b} = \; ?\]`}</p>
+        <p class="one-liner">{String.raw`\[${formatNumber(data.a)} - ${formatNumber(data.b)} = \; ?\]`}</p>
+      );
+
+    case "multiplication-by-2-3-4-5-10":
+    case "multiplication-by-6-7-8-9":
+    case "multiplication-product-up-to-1-million":
+      return (
+        <p class="one-liner">
+          {String.raw`\[${formatNumber(data.a)} \times ${formatNumber(data.b)} = \; ?\]`}
+        </p>
+      );
+
+    case "division-by-2-3-4-5-10":
+    case "division-by-6-7-8-9":
+    case "division-2digit-by-1digit-remainder":
+    case "division-3digit-by-1digit":
+    case "division-4digit-by-2digit":
+      return (
+        <p class="one-liner">
+          {String.raw`\[${formatNumber(data.a)} \div ${formatNumber(data.b)} = \; ?\]`}
+        </p>
       );
 
     case "count-10-random-dots":

@@ -120,6 +120,158 @@ export const QUESTIONS = {
       { question: <p>{String.raw`\[42 - 23 = \; ?\]`}</p>, answer: "19" },
     ],
   },
+  "subtraction-two-digit-three-digit": {
+    title: "Subtraction of a 2-digit and 3-digit number",
+    description: "Subtract a two-digit number from a three-digit number.",
+    examples: [
+      { question: <p>{String.raw`\[100 - 35 = \; ?\]`}</p>, answer: "65" },
+    ],
+  },
+  "subtraction-two-digit-four-digit": {
+    title: "Subtraction of a 2-digit and 4-digit number",
+    description: "Subtract a two-digit number from a four-digit number.",
+    examples: [
+      {
+        question: <p>{String.raw`\[${formatNumber(1000)} - 10 = \; ?\]`}</p>,
+        answer: "990",
+      },
+    ],
+  },
+  "subtraction-four-digit-four-digit": {
+    title: "Subtraction of a 4-digit and 4-digit number",
+    description: "Subtract a four-digit number from a four-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(1000)} - ${formatNumber(1000)} = \; ?\]`}</p>
+        ),
+        answer: "0",
+      },
+    ],
+  },
+  "subtraction-four-digit-five-digit": {
+    title: "Subtraction of a 4-digit and 5-digit number",
+    description: "Subtract a four-digit number from a five-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(11000)} - ${formatNumber(1000)} = \; ?\]`}</p>
+        ),
+        answer: "10000",
+      },
+    ],
+  },
+  "subtraction-four-digit-six-digit": {
+    title: "Subtraction of a 4-digit and 6-digit number",
+    description: "Subtract a four-digit number from a six-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(110000)} - ${formatNumber(1000)} = \; ?\]`}</p>
+        ),
+        answer: "109000",
+      },
+    ],
+  },
+
+  "multiplication-by-2-3-4-5-10": {
+    title: "Multiplication by 2, 3, 4, 5, and 10",
+    description: "Multiply whole numbers by 2, 3, 4, 5, or 10.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(2)} \times ${formatNumber(2)} = \; ?\]`}</p>
+        ),
+        answer: "4",
+      },
+    ],
+  },
+  "multiplication-by-6-7-8-9": {
+    title: "Multiplication by 6, 7, 8, and 9",
+    description: "Multiply whole numbers by 6, 7, 8, or 9.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(6)} \times ${formatNumber(2)} = \; ?\]`}</p>
+        ),
+        answer: "12",
+      },
+    ],
+  },
+  "multiplication-product-up-to-1-million": {
+    title: "Multiplication with Products up to 1,000,000",
+    description: "Multiply whole numbers with products up to 1,000,000.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(81)} \times ${formatNumber(90)} = \; ?\]`}</p>
+        ),
+        answer: "7290",
+      },
+    ],
+  },
+
+  "division-by-2-3-4-5-10": {
+    title: "Division by 2, 3, 4, 5, and 10",
+    description: "Divide whole numbers by 2, 3, 4, 5, or 10.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(10)} \div ${formatNumber(2)} = \; ?\]`}</p>
+        ),
+        answer: "5",
+      },
+    ],
+  },
+  "division-by-6-7-8-9": {
+    title: "Division by 6, 7, 8, and 9",
+    description: "Divide whole numbers by 6, 7, 8, or 9.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(54)} \div ${formatNumber(6)} = \; ?\]`}</p>
+        ),
+        answer: "9",
+      },
+    ],
+  },
+  "division-2digit-by-1digit-remainder": {
+    title: "Division of a 2-digit by a 1-digit Number",
+    description:
+      "Divide a two-digit number by a one-digit number and find the remainder.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(5)} \div ${formatNumber(2)} = \; ?\]`}</p>
+        ),
+        answer: "1",
+      },
+    ],
+  },
+  "division-3digit-by-1digit": {
+    title: "Division of a 3-digit by a 1-digit Number",
+    description: "Divide a three-digit number by a one-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(100)} \div ${formatNumber(2)} = \; ?\]`}</p>
+        ),
+        answer: "50",
+      },
+    ],
+  },
+  "division-4digit-by-2digit": {
+    title: "Division of a 4-digit by a 2-digit Number",
+    description: "Divide a four-digit number by a two-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(1000)} \div ${formatNumber(20)} = \; ?\]`}</p>
+        ),
+        answer: "50",
+      },
+    ],
+  },
 
   "count-coins-20": {
     title: "Counting Coins",
