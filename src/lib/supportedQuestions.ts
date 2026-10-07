@@ -3,6 +3,11 @@ export const SUPPORTED_QUESTIONS = [
   "addition-single-digit-carry",
   "addition-single-double-digit-under-20",
   "addition-double-digit-under-100",
+  "addition-two-digit-three-digit",
+  "addition-two-digit-four-digit",
+  "addition-four-digit-four-digit",
+  "addition-four-digit-five-digit",
+  "addition-four-digit-six-digit",
 
   "subtraction-single-digit-no-borrow",
   "subtraction-double-single-digit-under-20",

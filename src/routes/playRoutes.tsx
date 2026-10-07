@@ -240,8 +240,15 @@ function formatQuestion(code: string, data: any) {
     case "addition-single-digit-carry":
     case "addition-single-double-digit-under-20":
     case "addition-double-digit-under-100":
+    case "addition-two-digit-three-digit":
+    case "addition-two-digit-four-digit":
+    case "addition-four-digit-four-digit":
+    case "addition-four-digit-five-digit":
+    case "addition-four-digit-six-digit":
       return (
-        <p class="one-liner">{String.raw`\[${data.a} + ${data.b} = \; ?\]`}</p>
+        <p class="one-liner">
+          {String.raw`\[${formatNumber(data.a)} + ${formatNumber(data.b)} = \; ?\]`}
+        </p>
       );
 
     case "subtraction-single-digit-no-borrow":
@@ -498,4 +505,8 @@ function BerryMoney({ ones, fives, tens, fifties }: BerryMoneyProps) {
       <p class="text-center">How many berries is that?</p>
     </div>
   );
+}
+
+function formatNumber(n: number) {
+  return n.toLocaleString().replaceAll(",", "{,}");
 }

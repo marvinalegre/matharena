@@ -32,6 +32,66 @@ export const QUESTIONS = {
       { question: <p>{String.raw`\[42 + 55 = \; ?\]`}</p>, answer: "97" },
     ],
   },
+  "addition-two-digit-three-digit": {
+    title: "Addition of a 2-digit and 3-digit Number",
+    description: "Add a 2-digit number and a 3-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(25)} + ${formatNumber(836)} = \; ?\]`}</p>
+        ),
+        answer: "861",
+      },
+    ],
+  },
+  "addition-two-digit-four-digit": {
+    title: "Addition of a 2-digit and 4-digit Number",
+    description: "Add a 2-digit number and a 4-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(2150)} + ${formatNumber(49)} = \; ?\]`}</p>
+        ),
+        answer: "2199",
+      },
+    ],
+  },
+  "addition-four-digit-four-digit": {
+    title: "Addition of two 4-digit Numbers",
+    description: "Add a 4-digit number and another 4-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(3611)} + ${formatNumber(9924)} = \; ?\]`}</p>
+        ),
+        answer: "13535",
+      },
+    ],
+  },
+  "addition-four-digit-five-digit": {
+    title: "Addition of a 4-digit and 5-digit Number",
+    description: "Add a 4-digit number and a 5-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(7322)} + ${formatNumber(18382)} = \; ?\]`}</p>
+        ),
+        answer: "25704",
+      },
+    ],
+  },
+  "addition-four-digit-six-digit": {
+    title: "Addition of a 4-digit and 6-digit Number",
+    description: "Add a 4-digit number and a 6-digit number.",
+    examples: [
+      {
+        question: (
+          <p>{String.raw`\[${formatNumber(3021)} + ${formatNumber(839234)} = \; ?\]`}</p>
+        ),
+        answer: "842255",
+      },
+    ],
+  },
 
   "subtraction-single-digit-no-borrow": {
     title: "Single Digit Subtraction Without Borrowing",
@@ -487,3 +547,7 @@ export const QUESTIONS = {
     ],
   },
 } as const;
+
+function formatNumber(n: number) {
+  return n.toLocaleString().replaceAll(",", "{,}");
+}
