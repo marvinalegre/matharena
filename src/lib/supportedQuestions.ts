@@ -1,4 +1,13 @@
 export const SUPPORTED_QUESTIONS = [
+  "alphabet-fibonacci",
+  "alphabet-symmetry",
+  "alphabet-interleaved-constant-step",
+  "alphabet-alternating-direction",
+  "alphabet-alternating-step",
+  "alphabet-decreasing-step",
+  "alphabet-increasing-step",
+  "alphabet-repeating-cycle",
+  "alphabet-constant-reverse-step",
   "alphabet-constant-step",
 
   "addition-single-digit-no-carry",

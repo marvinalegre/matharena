@@ -1,6 +1,15 @@
 INSERT
 OR IGNORE INTO questions (code, rating)
 VALUES
+  ('alphabet-fibonacci', 1100),
+  ('alphabet-symmetry', 1025),
+  ('alphabet-interleaved-constant-step', 1020),
+  ('alphabet-alternating-direction', 1070),
+  ('alphabet-alternating-step', 1050),
+  ('alphabet-decreasing-step', 1000),
+  ('alphabet-increasing-step', 970),
+  ('alphabet-repeating-cycle', 920),
+  ('alphabet-constant-reverse-step', 950),
   ('alphabet-constant-step', 900),
   ('addition-single-digit-no-carry', 800),
   ('addition-single-digit-carry', 800),

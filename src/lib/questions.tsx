@@ -1,7 +1,264 @@
 export const QUESTIONS = {
+  "alphabet-fibonacci": {
+    title: "Alphabet Fibonacci",
+    description:
+      "Find the next letter in a sequence where the gaps follow the Fibonacci sequence.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"a c e h l _"}</p>
+          </div>
+        ),
+        answer: "r",
+      },
+    ],
+  },
+  "alphabet-symmetry": {
+    title: "Alphabet Symmetry",
+    description:
+      "Find the missing letter in a sequence that follows a symmetrical pattern.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"a d g j g d _"}</p>
+          </div>
+        ),
+        answer: "a",
+      },
+
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"b f j n j f _"}</p>
+          </div>
+        ),
+        answer: "b",
+      },
+    ],
+  },
+  "alphabet-interleaved-constant-step": {
+    title: "Alphabet Interleaved Constant Step",
+    description:
+      "Find the next letter in a sequence made of two interleaved sequences, each with a constant step.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"d a g d j g _"}</p>
+          </div>
+        ),
+        answer: "m",
+      },
+
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"f g i i l k _"}</p>
+          </div>
+        ),
+        answer: "o",
+      },
+    ],
+  },
+  "alphabet-alternating-direction": {
+    title: "Alphabet Alternating Direction",
+    description:
+      "Find the next letter in a sequence where the direction alternates between forward and backward.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"a d b e c _"}</p>
+          </div>
+        ),
+        answer: "f",
+      },
+
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"r t s u t _"}</p>
+          </div>
+        ),
+        answer: "v",
+      },
+    ],
+  },
+  "alphabet-alternating-step": {
+    title: "Alphabet Alternating Step",
+    description:
+      "Find the next letter in a sequence where the steps alternate between two values.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"a c d f g _"}</p>
+          </div>
+        ),
+        answer: "i",
+      },
+
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"h i j k l _"}</p>
+          </div>
+        ),
+        answer: "m",
+      },
+    ],
+  },
+  "alphabet-decreasing-step": {
+    title: "Alphabet Decreasing Step",
+    description:
+      "Find the next letter in a sequence where the step gets smaller each time.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"w v t q m _"}</p>
+          </div>
+        ),
+        answer: "h",
+      },
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"z y w t p _"}</p>
+          </div>
+        ),
+        answer: "k",
+      },
+    ],
+  },
+  "alphabet-increasing-step": {
+    title: "Alphabet Increasing Step",
+    description:
+      "Find the next letter in a sequence where the step gets larger each time.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"a b d g k _"}</p>
+          </div>
+        ),
+        answer: "p",
+      },
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"b d g k p _"}</p>
+          </div>
+        ),
+        answer: "v",
+      },
+    ],
+  },
+  "alphabet-repeating-cycle": {
+    title: "Alphabet Repeating Cycle",
+    description:
+      "Find the next letter in a sequence that repeats the same pattern of letters.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"a b c a b _"}</p>
+          </div>
+        ),
+        answer: "c",
+      },
+
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"d f h d f _"}</p>
+          </div>
+        ),
+        answer: "h",
+      },
+    ],
+  },
+  "alphabet-constant-reverse-step": {
+    title: "Alphabet Constant Reverse Step",
+    description:
+      "Find the next letter in a sequence where the gap between letters stays the same and moves backward.",
+    examples: [
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"z w t q n _"}</p>
+          </div>
+        ),
+        answer: "k",
+      },
+
+      {
+        question: (
+          <div class="my-3">
+            <p class="text-center">
+              What is the missing letter in the sequence?
+            </p>
+            <p class="alphabet-sequence">{"y v s p m _"}</p>
+          </div>
+        ),
+        answer: "j",
+      },
+    ],
+  },
   "alphabet-constant-step": {
     title: "Alphabet Constant Step",
-    description: "Find the next letter in a sequence with a constant step.",
+    description:
+      "Find the next letter in a sequence where the gap between letters stays the same.",
     examples: [
       {
         question: (

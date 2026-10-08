@@ -236,6 +236,15 @@ playRoutes.post("/", async (c) => {
 
 function formatQuestion(code: string, data: any) {
   switch (code) {
+    case "alphabet-fibonacci":
+    case "alphabet-symmetry":
+    case "alphabet-interleaved-constant-step":
+    case "alphabet-alternating-direction":
+    case "alphabet-alternating-step":
+    case "alphabet-decreasing-step":
+    case "alphabet-increasing-step":
+    case "alphabet-repeating-cycle":
+    case "alphabet-constant-reverse-step":
     case "alphabet-constant-step":
       return (
         <div class="my-3">
