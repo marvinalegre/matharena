@@ -20,6 +20,11 @@
   padding-left: 0.7rem;
 }
 
+.navbar__brand:focus-visible,
+.navbar__nav a:focus-visible {
+  outline: 2px solid darkorange;
+  outline-offset: 4px;
+}
 .navbar__nav {
   position: fixed;
   top: 0;

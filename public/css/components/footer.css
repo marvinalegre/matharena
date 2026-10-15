@@ -22,6 +22,11 @@ footer a + a::before {
   color: #aaa;
 }
 
+footer a:focus-visible {
+  outline: 2px solid darkorange;
+  outline-offset: 4px;
+}
+
 @media (max-width: 360px) {
   footer {
     font-size: 0.85rem;

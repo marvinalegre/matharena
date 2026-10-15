@@ -111,6 +111,11 @@ input[name="answer"] {
     box-shadow 150ms ease;
 }
 
+input[name="answer"]:focus {
+  outline: 3px solid darkorange;
+  border: none;
+}
+
 input[name="answer"]::placeholder {
   color: var(--subtle);
 }
@@ -136,6 +141,10 @@ button[type="submit"] {
   transition: background-color 150ms ease;
 }
 
+button[type="submit"]:focus-visible {
+  outline: 4px solid darkorange;
+}
+
 button[type="submit"]:disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -152,6 +161,11 @@ button[type="submit"]:disabled {
   color: var(--subtle);
   text-decoration: none;
   text-underline-offset: 2px;
+}
+
+.hint a:focus-visible {
+  outline: 2px solid darkorange;
+  outline-offset: 4px;
 }
 
 .hint a:hover {

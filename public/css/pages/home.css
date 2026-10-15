@@ -86,6 +86,10 @@
   text-decoration: none;
 }
 
+.start-button:focus-visible {
+  outline: 6px solid darkorange;
+}
+
 /* Question preview */
 
 .question-preview {
